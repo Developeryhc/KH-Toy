@@ -1,0 +1,220 @@
+/* 모달 시작 */
+/* 모달 back */
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: rgba(0, 0, 0, 0.5);
+  transition-duration: 0.5s;
+}
+/* ============== 모달 로그인 =========== */
+.modalBox-login {
+  position: fixed;
+  bottom: -400px;
+  align-self: center;
+  min-width: 700px;
+  height: 400px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 30px;
+  transition-duration: 0.5s;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff;
+}
+.loginBox {
+  padding: 0 10px;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+.headText {
+  border-bottom: 3px solid black;
+  width: 90%;
+  margin: 10px auto;
+  border-image: linear-gradient(to right, #d43b76, #e623ccaa, #7d1adaaa);
+  border-image-slice: 1;
+  padding: 10px 0;
+}
+.loginBox > form > input,
+button {
+  display: block;
+  width: 90%;
+  height: 30px;
+  margin: auto;
+  margin-top: 5px;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+.loginBox > form > input {
+  border-bottom: 1px solid #ccc;
+  padding: 0 10px;
+  font-size: 12px;
+  transition-duration: 0.5s;
+}
+.loginBox > form > input:focus {
+  border-bottom: 1px solid blue;
+}
+.videoBox {
+  flex-grow: 9;
+  /* background-color:red; */
+  background-image: url("/Training/images/moveImg/i14250964719.gif");
+  background-repeat: repeat;
+  background-size: 100% 100%;
+}
+#loginBtn {
+  background: linear-gradient(to right, #7c3ce2, #603ddf, #4a54e7, #3d7edf);
+  font-weight: bold;
+  border-radius: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition-duration: 1s;
+}
+#loginBtn:hover {
+  background: linear-gradient(to right, #3d7edf, #7c3ce2, #603ddf, #4a54e7);
+}
+.linkBox {
+  display: block;
+  text-align: left;
+  padding: 0 10px;
+}
+.linkBox > a {
+  text-decoration: none;
+  color: #0400fd;
+  float: right;
+}
+.linkBox > a:hover {
+  text-decoration: underline;
+}
+/* =================== 모달 가입 ============= */
+.modalBox-signUp {
+  position: fixed;
+  bottom: -650px;
+  align-self: center;
+  /* min-width: 400px; */
+  width: 450px;
+  height: 650px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 30px;
+  transition-duration: 0.5s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+.headText {
+  border-bottom: 3px solid black;
+  width: 90%;
+  margin: 10px auto;
+  border-image: linear-gradient(to right, #d43b76, #e623ccaa, #7d1adaaa);
+  border-image-slice: 1;
+  padding: 10px 0;
+}
+/* 회원가입 css */
+.joinForm {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.backImg {
+  height: 300px;
+  width: 90%;
+  margin: auto;
+  background-image: url("/Training/images/icon/member-icon-11.png");
+  background-size: 100% 100%;
+}
+.sign-inputs,
+#signUpBtn {
+  width: 90%;
+  height: 40px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  outline: none;
+}
+.joinForm input,
+select {
+  border: 1px solid #ddd;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.joinForm > input:focus {
+  border-left: 6px solid #9368f7;
+  padding-left: 5px;
+  background-color: #f1daff;
+}
+.sign-inputs:first-child {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.sign-inputs:nth-child(3) {
+  margin-bottom: 20px;
+}
+.sign-inputs:nth-last-child(3) {
+  display: flex;
+  padding: 0;
+  margin-top: 10px;
+  align-items: center;
+}
+.sign-inputs:nth-last-child(3) > span {
+  padding: 0 10px;
+  color: #777;
+}
+.sign-inputs:nth-last-child(3) > span:first-child {
+  flex-grow: 1;
+  text-align: left;
+  align-self: flex-end;
+}
+.sign-inputs:nth-last-child(3) > select {
+  width: 100px;
+  height: 100%;
+  padding-left: 10px;
+}
+.sign-inputs:nth-last-child(2) {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  margin: 10px 0;
+}
+.sign-inputs:nth-last-child(2) > input {
+  height: 40px;
+  width: calc(100% / 3);
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+#signUpBtn {
+  margin-top: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #3d7edf;
+}
+#signUpBtn:hover {
+  animation-name: signBtn;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes signBtn {
+  0% {
+    background-color: #3d7edf;
+  }
+  50% {
+    background-color: #da5b45;
+    color: #fff;
+  }
+  100% {
+    background-color: #62e7dc;
+  }
+}
