@@ -49,7 +49,7 @@ $(document).ready(function() {
       //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
       $(".soup-title").click(function(){
           if(currentPage == 0){
-              location.href="http://www.naver.com"
+              location.href="/reservationFrm.do"
           }else if(currentPage == 1){
             // location.href="#"
             console.log("로그인");

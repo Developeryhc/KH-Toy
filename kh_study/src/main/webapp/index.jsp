@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<link rel="stylesheet" type="text/css" href="/resources/css/testMain.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/main/main.css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="/resources/javascript/testMain.js" type="text/javascript"></script>
+<script src="/resources/javascript/main/main.js" type="text/javascript"></script>
 <!-- 로그인, 가입 css -->
-<link rel="stylesheet" href="/resources/css/login_sign.css">
+<link rel="stylesheet" href="/resources/css/main/login_sign.css">
 
 <body>
     <div id="loader"></div>
@@ -20,8 +20,8 @@
         <div id="segments">
         </div>
         <div id="soup-nav">
-            <span id="soup-prev"><img src="/resources/image/left.png" class="fa fa-arrow-circle-o-left" aria-hidden="true"></img></span>
-            <span id="soup-next"><img src="/resources/image/right.png" class="fa fa-arrow-circle-o-right"
+            <span id="soup-prev"><img src="/resources/image/main/left.png" class="fa fa-arrow-circle-o-left" aria-hidden="true"></img></span>
+            <span id="soup-next"><img src="/resources/image/main/right.png" class="fa fa-arrow-circle-o-right"
                     aria-hidden="true"></img></span>
         </div>
     </div>
