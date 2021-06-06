@@ -186,10 +186,53 @@ $(document).ready(function() {
     });
     //로그인 버튼 클릭 시 ajax 통해 db조회
     $('.loginBtn').click(function(){
+    	const id = $('#studentId').val();
+    	const pw = $('#studentPw').val();
+    	$.ajax({
+    		url : "/login.do",
+    		type : "post",
+    		data : {studentId : id, studentPw : pw},
+    		success : function(data){
+    			if(data == '1'){
+    				location.href = "/reservationFrm.do";
+    			}else{
+    				alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+    			}
+    		}
+    	});
+    });
+    //회원가입 아이디 중복체크 함수
+    $('#studentId').keyup(function(){
+		var id = $(this).val();
+		$.ajax({
+			url : "/checkId.do",
+			type : "post",
+			data : {studentId : id},
+			success : function(data){
+				if(data == '1'){
+					$('.regs').eq(0).css('color','red');
+					$('.regs').eq(0).html('사용중인 ID 입니다.');
+				}else{
+					$('.regs').eq(0).css('color','green');
+					$('.regs').eq(0).html('사용 가능한 ID 입니다.');
+				}
+			}
+		});
     });
     //회원가입 버튼 클릭 시 유효성 검사 그리고 id중복 체크
-    $('.signUpBtn').click(function(){
+    $('#signUpBtn').click(function(){
+    	$('.joinForm input').css('border','1px solid #ddd');
+    	//phone1+phone2+phone3 합 처리
+    	const phone = $('.phones').eq(0).val()+$('.phones').eq(1).val()+$('.phones').eq(2).val();
+    	let checkReg = false;
+    	console.log($('#stuClass').val());
+    	checkReg = regId();		//아이디 유효성
+    	checkReg = regPw();		//비밀번호 유효성
+    	checkReg = chkPw();		//비밀번호 확인
+    	checkReg = regName();	//이름 유효성
+    	checkReg = classChk();	//class 검사
     });
+	
     //회원가입 input:focus 함수
     $('.sign-inputs').focus(function(){
       const id = $(this).attr('id');
@@ -284,3 +327,54 @@ $(document).ready(function() {
       $('.sign-inputs').val('');    //입력된 정보 초기화
     }
   }
+  //아이디 유효성 검사
+  function regId(){
+  	//reg : 유효성 검사 변수
+    const reg = /^[a-zA-Z0-9]{8,16}$/;
+    const id = $('#studentId').val();
+    if(!reg.test(id) || id == ''){
+    	$('#studentId').css('border','2px solid red');
+    	return true;
+    }
+    return false;
+  }
+  //비밀번호 유효성 검사
+  function regPw(){
+  	const reg = /^[a-zA-Z0-9]{10,20}$/;
+  	const pw = $('#studentPw').val();
+  	if(!reg.test(pw) || pw == ''){
+  		$('#studentPw').css('border','2px solid red');
+  		return true;
+  	}
+  	return false;
+  }
+  //비밀번호 확인 검사
+  function chkPw(){
+  	const pw = $('#studentPw').val();
+  	const pwChk = $('#pwChk').val();
+  	if(pw != pwChk || pw == ''){
+  		$('#pwChk').css('border','2px solid red');
+  		return true;
+  	}
+  	return false;
+  }
+  //이름 유효성 검사
+  function regName(){
+  	const reg = /^[가-힣]{2,10}$/;
+  	const name = $('#studentName').val();
+  	if(!reg.test(name) || name == ''){
+  		$('#studentName').css('border','2px solid red');
+  		return true;
+  	}
+  	return false;
+  }
+  //class 선택 검사
+  function classChk(){
+  	const khClass = $('#stuClass').val();
+  	if(khClass == 'default'){
+  		$('#stuClass').css('border','2px solid red');
+  		return true;
+  	}
+  	return false;
+  }
+  //전화번호 유효성 검사

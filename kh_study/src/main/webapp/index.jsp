@@ -65,15 +65,19 @@
             <h2 class="headText">SIGN UP</h2>
             <div class="backImg"></div>
             <form action="/join.do" method="post" class="joinForm">
+                <span class="regs"></span>
                 <input type="text" name="studentId" id="studentId" class="sign-inputs" placeholder="ID" minlength="8" maxlength="16" autocomplete="off">
+                <span class="regs"></span>
                 <input type="password" name="studentPw" id="studentPw" class="sign-inputs" placeholder="PASSWORD" minlength="10" maxlength="20">
                 <input type="password" id="pwChk" class="sign-inputs" placeholder="Re-Enter PASSWORD" minlength="10" maxlength="20">
+                <span class="regs"></span>
                 <input type="text" name="studentName" id="studentName" class="sign-inputs" placeholder="Name" minlength="2">
                 <div class="sign-inputs">
                     <span>Phone</span>
                     <span>Class</span>
                     <select name="studentClass" id="stuClass">
                         <option value="default" selected> = Choice = </option>
+                        <!-- 페이지 로드 시 ajax로 db존재하는 class를 가지고와서 js에서 만들어 append 해야할수도... -->
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -87,7 +91,7 @@
                     <input type="text" name="phone2" class="phones" minlength="3"  maxlength="4">-
                     <input type="text" name="phone3" class="phones" minlength="4" maxlength="4">
                 </div>
-                <button  id="signUpBtn">SIGN UP !</button>
+                <button type="button" id="signUpBtn">SIGN UP !</button>
             </form>
         </div>
     </div>
