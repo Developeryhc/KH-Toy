@@ -12,10 +12,22 @@
   background-color: rgba(0, 0, 0, 0.5);
   transition-duration: 0.5s;
 }
+#closeModalBtn {
+  /* background-image: url("/Training/images/menu_open:close/nav_close.png"); */
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+}
 /* ============== 모달 로그인 =========== */
 .modalBox-login {
   position: fixed;
-  bottom: -400px;
+  top: -400px;
   align-self: center;
   min-width: 700px;
   height: 400px;
@@ -23,14 +35,15 @@
   text-align: center;
   border-radius: 30px;
   transition-duration: 0.5s;
-  display: flex;
+  display: none;
   overflow: hidden;
   box-shadow: 0 0 5px #fff;
 }
 .loginBox {
   padding: 0 10px;
-  flex-grow: 1;
+  width: 250px;
   box-sizing: border-box;
+  position: relative;
 }
 .headText {
   border-bottom: 3px solid black;
@@ -61,11 +74,71 @@ button {
   border-bottom: 1px solid blue;
 }
 .videoBox {
-  flex-grow: 9;
   /* background-color:red; */
-  background-image: url("/Training/images/moveImg/i14250964719.gif");
+  background-image: url("/resources/image/main/elsa.gif");
   background-repeat: repeat;
-  background-size: 100% 100%;
+  background-size: 450px 100%;
+  width: 450px;
+}
+.forgetModal {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 450px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  overflow: hidden;
+}
+.forgetId > *,
+.forgetPw > * {
+  box-sizing: border-box;
+}
+.forgetId,
+.forgetPw {
+  width: calc(100% / 2);
+  height: 200px;
+  background-color: #fff;
+  position: absolute;
+  transition-duration: 0.5s;
+  border-radius: 20px;
+}
+.forgetId > input:focus,
+.forgetPw > input:focus {
+  background-color: #383838;
+  color: #fff;
+}
+.forgetId > input:focus::placeholder,
+.forgetPw > input:focus::placeholder {
+  color: #fff;
+}
+/* 아이디 찾기 모달 창 영역 밖 설정 */
+.forgetId {
+  left: calc(-100% / 2);
+}
+/* 비밀번호 찾기 모달 창 영역 밖 설정 */
+.forgetPw {
+  right: calc(-100% / 2);
+}
+.forget-inputs {
+  width: 80%;
+  height: 30px;
+  outline: none;
+  padding: 0 10px;
+  border: 1px solid #888;
+  transition-duration: 0.3s;
+}
+#forgetIdBtn,
+#forgetPwBtn {
+  margin-top: 20px;
+  color: #9368f7;
+  background-color: rgb(84, 83, 85);
+  cursor: pointer;
+}
+#forgetIdBtn:hover,
+#forgetPwBtn:hover {
+  background-color: #9368f7;
+  color: #ddd;
 }
 #loginBtn {
   background: linear-gradient(to right, #7c3ce2, #603ddf, #4a54e7, #3d7edf);
@@ -104,7 +177,7 @@ button {
   text-align: center;
   border-radius: 30px;
   transition-duration: 0.5s;
-  display: flex;
+  display: none;
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 0 5px #fff;
@@ -132,7 +205,7 @@ button {
   height: 300px;
   width: 90%;
   margin: auto;
-  background-image: url("/Training/images/icon/member-icon-11.png");
+  background-image: url("/resources/image/main/member-icon-11.png");
   background-size: 100% 100%;
 }
 .sign-inputs,
@@ -148,6 +221,13 @@ select {
   border: 1px solid #ddd;
   transition-duration: 0.3s;
   outline: none;
+}
+.modalBox-signUp select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  text-align-last: center;
 }
 .joinForm > input:focus {
   border-left: 6px solid #9368f7;
@@ -179,7 +259,6 @@ select {
 .sign-inputs:nth-last-child(3) > select {
   width: 100px;
   height: 100%;
-  padding-left: 10px;
 }
 .sign-inputs:nth-last-child(2) {
   display: flex;
