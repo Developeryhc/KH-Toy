@@ -85,7 +85,7 @@
         <div class="pan">
 			<div class="header">
 				<div>
-					<div class="logo">DingCo</div>
+					<div class="logo">DoingCo</div>
 				</div>
 			</div>
          <div class="content" style="width: 900px; margin: 0 auto"></div>
