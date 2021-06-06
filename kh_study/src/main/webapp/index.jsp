@@ -27,20 +27,37 @@
     </div>
     <!-- =================== 로그인, 가입 ===================== -->
     <div class="modal">
+        <button id="closeModalBtn">
+            <img src="/resources/image/buttons/closeBtn.png" alt="닫기">
+        </button>
         <!-- 로그인 -->
         <div class="modalBox-login">
             <div class="videoBox">
+                <div class="forgetModal">
+                    <div class="forgetId">
+                        <h3>Search ID</h3>
+                        <input type="text" name="studentName" id="" class="forget-inputs" placeholder="Name" autocomplete="off">
+                        <input type="text" name="phone" id="" class="forget-inputs" placeholder="Phone" autocomplete="off">
+                        <button id="forgetIdBtn" class="forget-inputs">Search</button>
+                    </div>
+                    <div class="forgetPw">
+                        <h3>Search Password</h3>
+                        <input type="text" name="studentId" id="" class="forget-inputs" placeholder="ID" autocomplete="off">
+                        <input type="text" name="phone" id="" class="forget-inputs" placeholder="Phone" autocomplete="off">
+                        <button id="forgetPwBtn" class="forget-inputs">Next</button>
+                    </div>
+                </div>
             </div>
             <div class="loginBox">
                 <h2 class="headText">SING IN</h2>
                 <form action="#" method="post">
-                    <input type="text" name="memberId" placeholder="ID" autocomplete="off">
-                    <input type="password" name="memberPw" placeholder="Password">
+                    <input type="text" name="memberId" class="loginInfo" placeholder="ID" autocomplete="off">
+                    <input type="password" name="memberPw" class="loginInfo" placeholder="Password">
                     <button type="button" id="loginBtn">Login</button>
                 </form>
-                <span class="linkBox">Not a Member?<a href="/joinFrm.do" class="signBtn">SIGN UP</a></span>
-                <span class="linkBox">Forget ID?<a href="/searchInfo.do">Go</a></span>
-                <span class="linkBox">Forget you Password?<a href="/searchInfo.do">Go</a></span>
+                <span class="linkBox">Not a Member?<a href="javascript:void(0)" id="signUpMove" class="signBtn">SIGN UP</a></span>
+                <span class="linkBox">Forget ID?<a href="javascript:void(0)" id="forgetId">Go</a></span>
+                <span class="linkBox">Forget you Password?<a href="javascript:void(0)" id="forgetPw">Go</a></span>
             </div>
         </div>
         <!-- 회원가입 -->
@@ -56,11 +73,12 @@
                     <span>Phone</span>
                     <span>Class</span>
                     <select name="studentClass" id="stuClass">
-                        <option value="A">A반</option>
-                        <option value="B">B반</option>
-                        <option value="C">C반</option>
-                        <option value="D">D반</option>
-                        <option value="E">E반</option>
+                        <option value="default" selected> = Choice = </option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
                     </select>
                 </div>
                 <div class="sign-inputs">
@@ -69,7 +87,7 @@
                     <input type="text" name="phone2" class="phones" minlength="3"  maxlength="4">-
                     <input type="text" name="phone3" class="phones" minlength="4" maxlength="4">
                 </div>
-                <button type="button" id="signUpBtn">SIGN UP !</button>
+                <button  id="signUpBtn">SIGN UP !</button>
             </form>
         </div>
     </div>
