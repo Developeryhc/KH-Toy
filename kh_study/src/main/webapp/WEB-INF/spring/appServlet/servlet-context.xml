@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -21,7 +25,36 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- spring-jdbc : DB 접속정보를 저장하는 dataSource객체 생성 -->
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<beans:property name="url" value="jdbc:oracle:thin:@1.220.236.74:15215:xe"/>
+		<beans:property name="username" value="doingco"/>
+		<beans:property name="password" value="ysk"/>
+	</beans:bean>
+	<!-- mybatis 설정 객체 -->
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"/>							<!-- jdbc의 DB설정 참조 -->
+		<beans:property name="configLocation" value="classpath:mybatis-config.xml"/>	<!-- config.xml 경로 설정 -->
+		<beans:property name="mapperLocations" value="classpath:/mapper/*mapper.xml"/>	<!-- *mapper.xml 경로 설정-->
+	</beans:bean>
+	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0" ref="sqlSession"/>
+	</beans:bean>
+	<!-- 트랜잭션 관리 객체 -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"/>							<!-- jdbc의 DB설정 참조 -->
+	</beans:bean>
+	
+	<!-- aop @Annotation 방식 사용 선언 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<!-- 트랜잭션 @Annotation 방식 사용 선언  -->
+	<tx:annotation-driven/>
+	
+	
+	<!-- 서버 시작 시 자동으로 생성될 객체(클래스)의 범위 설정 -->
 	<context:component-scan base-package="kr.or.iei" />
+	<context:component-scan base-package="kr.or.student" />
 	<context:component-scan base-package="kr.or.reservation" />
 	
 	

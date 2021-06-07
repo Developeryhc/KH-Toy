@@ -201,6 +201,10 @@ $(document).ready(function() {
     		}
     	});
     });
+    $('.sign-inputs').keydown(function(){
+    	var kcode = event.keyCode;
+    	if(kcode == 32) event.returnValue = false;    
+    });
     //회원가입 아이디 중복체크 함수
     $('#studentId').keyup(function(){
 		var id = $(this).val();
@@ -244,7 +248,7 @@ $(document).ready(function() {
       }else if(id == 'studentPw'){
         $(this).attr('placeholder','영어 대소문자,숫자 필수 10~20자 입력');
       }else if(id == 'studentName'){
-        $(this).attr('placeholder',`이름(한글)을 입력하세요.`);
+        $(this).attr('placeholder',`이름(한글)을 최소 2자 입력하세요.`);
       }
     });
     //회원가입 input:focus 해제 함수
@@ -304,6 +308,7 @@ $(document).ready(function() {
         modalBox.style.transform = 'translateY(-50%)';
       },100);
     }else if(num == 2){   //매개변수가 modal-회원가입일 때
+      loadClass();		//ajax를 호출하여 개강되어있는 반을 불러온다.
       const modalBox = document.getElementsByClassName('modalBox-signUp')[0];
       modalBox.style.display = 'flex';
       modal.style.display = 'flex';
@@ -330,6 +335,15 @@ $(document).ready(function() {
       $('.sign-inputs').val('');    //입력된 정보 초기화
     }
   }
+  //회원가입 창이 등장할 때 ajax로 db에서 개강중인 반을 가져와 append시키는 함수
+  function loadClass(){
+  	$.ajax({
+  		url : "/searchClass.do",
+  		success : function(data){
+  			
+  		}
+  	});
+  } 
   //아이디 유효성 검사
   function regId(){
   	//reg : 유효성 검사 변수
@@ -369,6 +383,7 @@ $(document).ready(function() {
   	const name = $('#studentName').val();
   	if(!reg.test(name) || name == ''){
   		$('#studentName').css('box-shadow','0px 0px 3px red');
+  		alert('이름 양식을 확인하세요');
   		return true;
   	}
   	return false;
@@ -378,6 +393,7 @@ $(document).ready(function() {
   	const khClass = $('#stuClass').val();
   	if(khClass == 'default'){
   		$('#stuClass').css('box-shadow','0px 0px 3px red');
+  		alert('반을 선택하세요');
   		return true;
   	}
   	return false;
@@ -389,6 +405,7 @@ $(document).ready(function() {
   	const phone3 = $('[name=phone3]').val();
   	if(!(phone1.length == 3 && phone1 == '010' && phone2.length >= 3 && phone3.length == 4)){
   		$('.phones').css('box-shadow','0px 0px 3px red');
+  		alert('전화번호를 정확히 입력하세요');
   		return true;
   	}
   	return false;
