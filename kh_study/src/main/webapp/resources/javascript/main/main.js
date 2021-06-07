@@ -221,7 +221,7 @@ $(document).ready(function() {
     });
     //회원가입 버튼 클릭 시 유효성 검사 그리고 id중복 체크
     $('#signUpBtn').click(function(){
-    	$('.joinForm input').css('border','1px solid #ddd');
+    	$('.joinForm input').css('box-shadow','none');
     	//phone1+phone2+phone3 합 처리
     	const phone = $('.phones').eq(0).val()+$('.phones').eq(1).val()+$('.phones').eq(2).val();
     	let checkReg = false;
@@ -231,6 +231,9 @@ $(document).ready(function() {
     	checkReg = chkPw();		//비밀번호 확인
     	checkReg = regName();	//이름 유효성
     	checkReg = classChk();	//class 검사
+    	checkReg = regPhone();	//전화번호 양식
+    	
+    	//ajax로 전송해 값을 받아와 결과를 제공하고 login창을 띄워준다
     });
 	
     //회원가입 input:focus 함수
@@ -333,7 +336,8 @@ $(document).ready(function() {
     const reg = /^[a-zA-Z0-9]{8,16}$/;
     const id = $('#studentId').val();
     if(!reg.test(id) || id == ''){
-    	$('#studentId').css('border','2px solid red');
+    	$('#studentId').css('box-shadow','0px 0px 3px red');
+    	alert('아이디 양식을 확인하세요');
     	return true;
     }
     return false;
@@ -343,7 +347,8 @@ $(document).ready(function() {
   	const reg = /^[a-zA-Z0-9]{10,20}$/;
   	const pw = $('#studentPw').val();
   	if(!reg.test(pw) || pw == ''){
-  		$('#studentPw').css('border','2px solid red');
+  		$('#studentPw').css('box-shadow','0px 0px 3px red');
+    	alert('비밀번호 양식을 확인하세요');
   		return true;
   	}
   	return false;
@@ -353,7 +358,7 @@ $(document).ready(function() {
   	const pw = $('#studentPw').val();
   	const pwChk = $('#pwChk').val();
   	if(pw != pwChk || pw == ''){
-  		$('#pwChk').css('border','2px solid red');
+  		$('#pwChk').css('box-shadow','0px 0px 3px red');
   		return true;
   	}
   	return false;
@@ -363,7 +368,7 @@ $(document).ready(function() {
   	const reg = /^[가-힣]{2,10}$/;
   	const name = $('#studentName').val();
   	if(!reg.test(name) || name == ''){
-  		$('#studentName').css('border','2px solid red');
+  		$('#studentName').css('box-shadow','0px 0px 3px red');
   		return true;
   	}
   	return false;
@@ -372,9 +377,19 @@ $(document).ready(function() {
   function classChk(){
   	const khClass = $('#stuClass').val();
   	if(khClass == 'default'){
-  		$('#stuClass').css('border','2px solid red');
+  		$('#stuClass').css('box-shadow','0px 0px 3px red');
   		return true;
   	}
   	return false;
   }
   //전화번호 유효성 검사
+  function regPhone(){
+  	const phone1 = $('[name=phone1]').val();
+  	const phone2 = $('[name=phone2]').val();
+  	const phone3 = $('[name=phone3]').val();
+  	if(!(phone1.length == 3 && phone1 == '010' && phone2.length >= 3 && phone3.length == 4)){
+  		$('.phones').css('box-shadow','0px 0px 3px red');
+  		return true;
+  	}
+  	return false;
+  }

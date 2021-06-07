@@ -86,10 +86,10 @@
                     </select>
                 </div>
                 <div class="sign-inputs">
-                    <input type="text" name="phone1" class="phones" minlength="3" maxlength="3">-
+                    <input type="text" name="phone1" class="phones" minlength="3" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
                     <!-- <input type="text" name="phone1" class="phones" minlength="3" maxlength="3" readonly value="010">- -->
-                    <input type="text" name="phone2" class="phones" minlength="3"  maxlength="4">-
-                    <input type="text" name="phone3" class="phones" minlength="4" maxlength="4">
+                    <input type="text" name="phone2" class="phones" minlength="3"  maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
+                    <input type="text" name="phone3" class="phones" minlength="4" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
                 <button type="button" id="signUpBtn">SIGN UP !</button>
             </form>
