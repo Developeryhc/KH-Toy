@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.cla.model.vo.cla;
 import kr.or.student.model.dao.StudentDao;
@@ -29,6 +30,7 @@ public class StudentService {
 		return (ArrayList<cla>)dao.selectOpenCla();
 	}
 	//회원가입 insert
+	@Transactional
 	public int insertStudent(Student s) {
 		return dao.insertStudent(s);
 	}
