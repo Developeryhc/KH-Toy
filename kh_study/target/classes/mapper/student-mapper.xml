@@ -11,6 +11,9 @@
 			phone,
 			grade
 		from student where student_id=#{studentId}
+		<if test="studentPw != null">
+			and student_pw=#{studentPw}
+		</if>
 	</select>
 	<select id="selectOpenCla" resultType="c">				<!-- 개강중인 반만 가져오기 -->
 		select
@@ -19,6 +22,9 @@
 			class_subject as classSubject,
 			class_start as classStart,
 			class_end as classEnd
-		from class where class_end > to_char(sysdate,'yyyy-mm-dd')
+		from class where class_end > to_char(sysdate,'yyyy-mm-dd') order by 1
 	</select>
+	<insert id="insertStudent" parameterType="s">
+		insert into student values(student_seq.nextval,#{studentClass},#{studentId},#{studentName},#{studentPw},#{phone},3)
+	</insert>
 </mapper>

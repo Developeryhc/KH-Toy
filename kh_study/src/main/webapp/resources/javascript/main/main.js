@@ -185,16 +185,20 @@ $(document).ready(function() {
       }
     });
     //로그인 버튼 클릭 시 ajax 통해 db조회
-    $('.loginBtn').click(function(){
+    $('#loginBtn').click(function(){
     	const id = $('#studentId').val();
-    	const pw = $('#studentPw').val();
+    	const pw = $('[name=studentPw]').val();
+    	console.log(id);
+    	console.log(pw);
     	$.ajax({
     		url : "/login.do",
     		type : "post",
     		data : {studentId : id, studentPw : pw},
     		success : function(data){
     			if(data == '1'){
+    				alert('결과는?');
     				location.href = "/reservationFrm.do";
+    				
     			}else{
     				alert('아이디 또는 비밀번호가 일치하지 않습니다.');
     			}
@@ -226,8 +230,6 @@ $(document).ready(function() {
     //회원가입 버튼 클릭 시 유효성 검사 그리고 id중복 체크
     $('#signUpBtn').click(function(){
     	$('.joinForm input').css('box-shadow','none');
-    	//phone1+phone2+phone3 합 처리
-    	const phone = $('.phones').eq(0).val()+$('.phones').eq(1).val()+$('.phones').eq(2).val();
     	let checkReg = false;
     	console.log($('#stuClass').val());
     	checkReg = regId();		//아이디 유효성
@@ -236,8 +238,42 @@ $(document).ready(function() {
     	checkReg = regName();	//이름 유효성
     	checkReg = classChk();	//class 검사
     	checkReg = regPhone();	//전화번호 양식
-    	
+    	if(checkReg){
+    		alert('가입 양식을 지켜주세요');
+    		return;
+    	}
+    	//가입 정보 가져오기
+    	const id = $('#studentId').val();
+    	const pw = $('#studentPw').val();
+    	const name = $('#studentName').val();
+    	const no = $('#stuClass').val();
+    	//phone1+phone2+phone3 합 처리
+    	const phone = $('.phones').eq(0).val()+"-"+$('.phones').eq(1).val()+"-"+$('.phones').eq(2).val();
     	//ajax로 전송해 값을 받아와 결과를 제공하고 login창을 띄워준다
+    	var obj = {
+    		studentId : id,
+    		studentPw : pw,
+    		studentName : name,
+    		studentClass : no,
+    		phone : phone
+    	}
+    	$.ajax({
+	    	url : "/join.do",
+	    	type : "post",
+	    	data : obj,
+	    	success : function(data){
+	    		if(data == 1){
+	    			alert('가입되었습니다');
+	    			modalHide(2);
+			    	currentPage--;
+			    	arrangeCurrentPage();
+			    	scrambleOthers();
+			    	modalShow(1);
+	    		}else{
+	    			alert('다시 시도해주세요');
+	    		}
+	    	}
+    	});
     });
 	
     //회원가입 input:focus 함수
@@ -292,6 +328,7 @@ $(document).ready(function() {
           }
       });
     }
+    loadClass();		//페이지 로드 시 ajax를 호출하여 개강되어있는 반을 불러온다.
   });
   //==========================================================================================================================
   //modal show 함수
@@ -308,7 +345,6 @@ $(document).ready(function() {
         modalBox.style.transform = 'translateY(-50%)';
       },100);
     }else if(num == 2){   //매개변수가 modal-회원가입일 때
-      loadClass();		//ajax를 호출하여 개강되어있는 반을 불러온다.
       const modalBox = document.getElementsByClassName('modalBox-signUp')[0];
       modalBox.style.display = 'flex';
       modal.style.display = 'flex';
@@ -335,14 +371,21 @@ $(document).ready(function() {
       $('.sign-inputs').val('');    //입력된 정보 초기화
     }
   }
-  //회원가입 창이 등장할 때 ajax로 db에서 개강중인 반을 가져와 append시키는 함수
+  //페이지가 로드되면 ajax로 db에서 개강중인 반을 가져와 append시키는 함수
   function loadClass(){
   	$.ajax({
   		url : "/searchClass.do",
+  		async : false,
   		success : function(data){
-  			
+  			var select = $(`<select name="studentClass" id="stuClass"><option value="default" selected> = Choice = </option>`);
+  			for(var i=0;i<data.length;i++){
+  				select.append(`<option value="${data[i].classNo}">${data[i].classSubject}</option>`);
+  			}
+  			select.append("</select>");
+  			$('#selectBox').append(select);
   		}
   	});
+  	
   } 
   //아이디 유효성 검사
   function regId(){
@@ -351,7 +394,7 @@ $(document).ready(function() {
     const id = $('#studentId').val();
     if(!reg.test(id) || id == ''){
     	$('#studentId').css('box-shadow','0px 0px 3px red');
-    	alert('아이디 양식을 확인하세요');
+    	//alert('아이디 양식을 확인하세요');
     	return true;
     }
     return false;
@@ -362,7 +405,7 @@ $(document).ready(function() {
   	const pw = $('#studentPw').val();
   	if(!reg.test(pw) || pw == ''){
   		$('#studentPw').css('box-shadow','0px 0px 3px red');
-    	alert('비밀번호 양식을 확인하세요');
+    	//alert('비밀번호 양식을 확인하세요');
   		return true;
   	}
   	return false;
@@ -383,7 +426,7 @@ $(document).ready(function() {
   	const name = $('#studentName').val();
   	if(!reg.test(name) || name == ''){
   		$('#studentName').css('box-shadow','0px 0px 3px red');
-  		alert('이름 양식을 확인하세요');
+  		//alert('이름 양식을 확인하세요');
   		return true;
   	}
   	return false;
@@ -393,7 +436,7 @@ $(document).ready(function() {
   	const khClass = $('#stuClass').val();
   	if(khClass == 'default'){
   		$('#stuClass').css('box-shadow','0px 0px 3px red');
-  		alert('반을 선택하세요');
+  		//alert('반을 선택하세요');
   		return true;
   	}
   	return false;
@@ -405,7 +448,7 @@ $(document).ready(function() {
   	const phone3 = $('[name=phone3]').val();
   	if(!(phone1.length == 3 && phone1 == '010' && phone2.length >= 3 && phone3.length == 4)){
   		$('.phones').css('box-shadow','0px 0px 3px red');
-  		alert('전화번호를 정확히 입력하세요');
+  		//alert('전화번호를 정확히 입력하세요');
   		return true;
   	}
   	return false;

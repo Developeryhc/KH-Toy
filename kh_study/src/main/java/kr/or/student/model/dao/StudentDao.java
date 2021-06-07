@@ -15,12 +15,17 @@ public class StudentDao {
 	@Autowired
 	private SqlSession session;
 	
+	//아이디 중복체크 select
 	public List selectOneStudent(Student s) {
 		return session.selectList("student.selectOneStudent",s);
 	}
-
+	//개강된 반 select
 	public List selectOpenCla() {
 		return session.selectList("student.selectOpenCla");
+	}
+	//insert
+	public int insertStudent(Student s) {
+		return session.insert("student.insertStudent",s);
 	}
 	
 }

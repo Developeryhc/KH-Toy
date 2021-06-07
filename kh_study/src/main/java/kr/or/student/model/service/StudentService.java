@@ -24,8 +24,12 @@ public class StudentService {
 		}
 		return stu;
 	}
-
+	//개강되어있는 반 전부 가져오기
 	public ArrayList<cla> selectOpenCla() {
 		return (ArrayList<cla>)dao.selectOpenCla();
+	}
+	//회원가입 insert
+	public int insertStudent(Student s) {
+		return dao.insertStudent(s);
 	}
 }

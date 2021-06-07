@@ -7,5 +7,6 @@
 	<typeAliases>
 		<typeAlias type="kr.or.student.model.vo.Student" alias="s"/>
 		<typeAlias type="kr.or.reservation.model.vo.Reservation" alias="r"/>
+		<typeAlias type="kr.or.cla.model.vo.cla" alias="c"/>
 	</typeAliases>
 </configuration>

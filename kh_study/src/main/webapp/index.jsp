@@ -51,8 +51,8 @@
             <div class="loginBox">
                 <h2 class="headText">SING IN</h2>
                 <form action="#" method="post">
-                    <input type="text" name="memberId" class="loginInfo" placeholder="ID" autocomplete="off">
-                    <input type="password" name="memberPw" class="loginInfo" placeholder="Password">
+                    <input type="text" name="studentId" id="studentId" class="loginInfo" placeholder="ID" autocomplete="off">
+                    <input type="password" name="studentPw" id="studentPw" class="loginInfo" placeholder="Password">
                     <button type="button" id="loginBtn">Login</button>
                 </form>
                 <span class="linkBox">Not a Member?<a href="javascript:void(0)" id="signUpMove" class="signBtn">SIGN UP</a></span>
@@ -72,18 +72,10 @@
                 <input type="password" id="pwChk" class="sign-inputs" placeholder="Re-Enter PASSWORD" minlength="10" maxlength="20">
                 <span class="regs"></span>
                 <input type="text" name="studentName" id="studentName" class="sign-inputs" placeholder="Name" minlength="2">
-                <div class="sign-inputs">
+                <div id="selectBox" class="sign-inputs">
                     <span>Phone</span>
                     <span>Class</span>
-                    <select name="studentClass" id="stuClass">
-                        <option value="default" selected> = Choice = </option>
-                        <!-- 페이지 로드 시 ajax로 db존재하는 class를 가지고와서 js에서 만들어 append 해야할수도... -->
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                    </select>
+                    <!-- select js로 만드는 곳 -->
                 </div>
                 <div class="sign-inputs">
                     <input type="text" name="phone1" class="phones" minlength="3" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
