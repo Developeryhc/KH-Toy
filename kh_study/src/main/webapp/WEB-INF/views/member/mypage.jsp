@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<div class="layout">
-			이개가튼거 뭐넣지
+			현재 총 자습일
 		</div>
 		<div class="layout">
 			현재 총 자습 시간 : 543 H
@@ -68,13 +68,13 @@
 	</div>
 	<div class="layout-wrap">
 		<div class="layout">
-			아오 슈발
+			평균 종료시간
 		</div>
 		<div class="layout">
-			뭐라도 넣어
+			평균 자습 시간
 		</div>
 		<div class="layout">
-			제바알
+			자습 랭킹
 		</div>
 	</div>
   	<%@include file="/WEB-INF/views/common/footer.jsp"%>
