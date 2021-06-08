@@ -53,6 +53,7 @@
                 <form action="#" method="post">
                     <input type="text" name="studentId" id="studentId" class="loginInfo" placeholder="ID" autocomplete="off">
                     <input type="password" name="studentPw" id="studentPw" class="loginInfo" placeholder="Password">
+                    <span class="linkBox" id="idSaveBox"><input type="checkbox" name="idSaveChk" id="idSaveChk"><span>Check Id Remember</span></span>
                     <button type="button" id="loginBtn">Login</button>
                 </form>
                 <span class="linkBox">Not a Member?<a href="javascript:void(0)" id="signUpMove" class="signBtn">SIGN UP</a></span>
@@ -75,7 +76,7 @@
                 <div id="selectBox" class="sign-inputs">
                     <span>Phone</span>
                     <span>Class</span>
-                    <!-- select js로 만드는 곳 -->
+                    <!-- js로 select박스 만들어 추가 됨-->
                 </div>
                 <div class="sign-inputs">
                     <input type="text" name="phone1" class="phones" minlength="3" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-

@@ -73,6 +73,22 @@ button {
 .loginBox > form > input:focus {
   border-bottom: 1px solid blue;
 }
+#idSaveBox{
+	display:flex;
+	align-items:center;
+}
+#idSaveChk{
+	float:left;
+	width:18px;
+	height:18px;
+	margin-left:5px;
+	box-sizing:border-box;
+	outline:none;
+	border:1px solid black;
+}
+#idSaveChk+span{
+	font-size:14px;
+}
 .videoBox {
   /* background-color:red; */
   background-image: url("/resources/image/main/elsa.gif");
@@ -166,6 +182,7 @@ button {
   text-decoration: underline;
 }
 /* =================== 모달 가입 ================= */
+
 .modalBox-signUp {
   position: fixed;
   bottom: -650px;

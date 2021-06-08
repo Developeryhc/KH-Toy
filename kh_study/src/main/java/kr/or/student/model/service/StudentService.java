@@ -30,7 +30,6 @@ public class StudentService {
 		return (ArrayList<cla>)dao.selectOpenCla();
 	}
 	//회원가입 insert
-	@Transactional
 	public int insertStudent(Student s) {
 		return dao.insertStudent(s);
 	}

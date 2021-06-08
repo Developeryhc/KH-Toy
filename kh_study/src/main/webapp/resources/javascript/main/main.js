@@ -196,9 +196,8 @@ $(document).ready(function() {
     		data : {studentId : id, studentPw : pw},
     		success : function(data){
     			if(data == '1'){
-    				alert('결과는?');
-    				location.href = "/reservationFrm.do";
-    				
+    				alert(id+' 님 환영합니다');
+    				cookieChk();
     			}else{
     				alert('아이디 또는 비밀번호가 일치하지 않습니다.');
     			}
@@ -329,13 +328,28 @@ $(document).ready(function() {
       });
     }
     loadClass();		//페이지 로드 시 ajax를 호출하여 개강되어있는 반을 불러온다.
+    
+    chkCookie();		//페이지 로드 시 쿠키에 등록 여부를 가져와 체크,input 자동 입력 
   });
   //==========================================================================================================================
+  function cookieChk(){
+  //로그인 버튼 클릭 ID 기억 체크에 따라 쿠키 등록/해제 동작 함수
+        var test = $('#idSaveChk').is(':checked');          //체크박스의 checked를 가져옴 > ftur/false
+        var studentId = $('#studentId').val();               //입력된 id값
+        if(test){
+            setCookie('studentId',studentId,7);                      //key:"studentId",value:studentId,7일 > 7일동안 쿠키에 등록해 기억됨
+        }else{
+            // setCookie('studentId',studentId,-1);                     //지난 날짜를 쿠키에 등록하면 삭제와 같은 동작
+            deleteCookie('studentId',studentId);
+        }
+        location.href = "/reservationFrm.do"; 
+  }
   //modal show 함수
   function modalShow(num){
     //modal창
     const modal = document.getElementsByClassName('modal')[0];
     if(num == 1){   // 매개변수가 modal-로그인일 때
+    	chkCookie();
       const modalBox = document.getElementsByClassName('modalBox-login')[0];
       modalBox.style.display = 'flex';
       modal.style.display = 'flex';
@@ -453,3 +467,27 @@ $(document).ready(function() {
   	}
   	return false;
   }
+  //매개변수명은 본인이 지정
+	//name : key값
+	//value : value값
+	//exp : 저장할 기간(기한)
+	function setCookie(name, value, exp) {
+	    var date = new Date();
+	    date.setTime(date.getTime() + exp*24*60*60*1000);                   //하루 기준 > exp는 1일 기준이다
+	    document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';        //잘 모르겠다...
+	}
+	function getCookie(name) {
+	    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+	    //값이 존재하지 않으면 null 리턴
+	    return value? value[2] : null;  //console.log()찍어보면 value[]로 리턴되고 세번째(2)에 입력id가 들어있다.
+	}
+	function deleteCookie(name,studentId) {
+	    // document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	    setCookie(name,studentId,-1);
+	}
+	function chkCookie(){
+	    if(getCookie('studentId') != null){                 //쿠키에 key:'studentId'의 값(value)이 null이 아니라면 등록되어 있는 경우 > true
+	        $('#idSaveChk').attr('checked','true');         //checkbox에 checked해준다.
+	        $('#studentId').val(getCookie('studentId'));    //아이디 입력 input의 value에 쿠기에 등록된 id값을 자동 기입해준다.
+	    }
+	}
