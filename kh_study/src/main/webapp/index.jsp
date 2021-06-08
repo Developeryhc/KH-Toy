@@ -8,13 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/resources/css/main/main.css" />
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="/resources/javascript/main/main.js" type="text/javascript"></script>
+	<!-- 로그인, 가입 css -->
+	<link rel="stylesheet" href="/resources/css/main/login_sign.css">
 </head>
-<link rel="stylesheet" type="text/css" href="/resources/css/main/main.css" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="/resources/javascript/main/main.js" type="text/javascript"></script>
-<!-- 로그인, 가입 css -->
-<link rel="stylesheet" href="/resources/css/main/login_sign.css">
-
 <body>
 	<c:choose>
 	<c:when test="${empty sessionScope.s.studentId}">
@@ -39,14 +38,14 @@
                 <div class="forgetModal">
                     <div class="forgetId">
                         <h3>Search ID</h3>
-                        <input type="text" name="studentName" id="" class="forget-inputs" placeholder="Name" autocomplete="off">
-                        <input type="text" name="phone" id="" class="forget-inputs" placeholder="Phone" autocomplete="off">
+                        <input type="text" name="studentName" id="searchIdName" class="forget-inputs" placeholder="Name" autocomplete="off">
+                        <input type="text" name="phone" id="searchIdPhone" class="forget-inputs" placeholder="Phone" autocomplete="off">
                         <button id="forgetIdBtn" class="forget-inputs">Search</button>
                     </div>
                     <div class="forgetPw">
                         <h3>Search Password</h3>
-                        <input type="text" name="studentId" id="" class="forget-inputs" placeholder="ID" autocomplete="off">
-                        <input type="text" name="phone" id="" class="forget-inputs" placeholder="Phone" autocomplete="off">
+                        <input type="text" name="studentId" id="searchPwId" class="forget-inputs" placeholder="ID" autocomplete="off">
+                        <input type="text" name="phone" id="searchPwPhone" class="forget-inputs" placeholder="Phone" autocomplete="off">
                         <button id="forgetPwBtn" class="forget-inputs">Next</button>
                     </div>
                 </div>
@@ -70,12 +69,12 @@
             <div class="backImg"></div>
             <form action="/join.do" method="post" class="joinForm">
                 <span class="regs"></span>
-                <input type="text" name="studentId" id="studentId" class="sign-inputs" placeholder="ID" minlength="8" maxlength="16" autocomplete="off">
+                <input type="text" name="studentId" id="signId" class="sign-inputs" placeholder="ID" minlength="6" maxlength="20" autocomplete="off">
                 <span class="regs"></span>
-                <input type="password" name="studentPw" id="studentPw" class="sign-inputs" placeholder="PASSWORD" minlength="10" maxlength="20">
-                <input type="password" id="pwChk" class="sign-inputs" placeholder="Re-Enter PASSWORD" minlength="10" maxlength="20">
+                <input type="password" name="studentPw" id="signPw" class="sign-inputs" placeholder="PASSWORD" minlength="8" maxlength="20">
+                <input type="password" id="pwChk" class="sign-inputs" placeholder="Re-Enter PASSWORD" minlength="8" maxlength="20">
                 <span class="regs"></span>
-                <input type="text" name="studentName" id="studentName" class="sign-inputs" placeholder="Name" minlength="2">
+                <input type="text" name="studentName" id="signName" class="sign-inputs" placeholder="Name" minlength="2">
                 <div id="selectBox" class="sign-inputs">
                     <span>Phone</span>
                     <span>Class</span>
