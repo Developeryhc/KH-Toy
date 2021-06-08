@@ -314,6 +314,14 @@ $(document).ready(function() {
       }
     });
   });
+  //비밀번호 수정 버튼 클릭 시 동작 함수
+  $('#modifyPwBtn').click(function(){
+  	var pw = $('#modifyPw').val();
+  	var pwChk = $('#modiPwChk').val();
+  	if(pw != pwChk){
+  		alert('입력한 비밀번호가 동일해야합니다');							//06/09/02:10 - 여기서 시작해야됨
+  	}
+  });
   //회원가입 input:focus 함수
   $('.sign-inputs').focus(function(){
     const id = $(this).attr('id');
