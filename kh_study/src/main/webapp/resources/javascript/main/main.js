@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     /*
      * Main variables
@@ -165,6 +164,10 @@ $(document).ready(function() {
         }
       }
     }
+    
+    
+    // 라이브러리 구분용 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    
     //modal 'x'버튼 클릭 이벤트 함수
     $('#closeModalBtn').click(function(){
       const login = $('.modalBox-login').css('display');  //로그인 창의 display 상태
@@ -334,7 +337,7 @@ $(document).ready(function() {
   //==========================================================================================================================
   function cookieChk(){
   //로그인 버튼 클릭 ID 기억 체크에 따라 쿠키 등록/해제 동작 함수
-        var test = $('#idSaveChk').is(':checked');          //체크박스의 checked를 가져옴 > ftur/false
+        var test = $('#idSaveChk').is(':checked');          //체크박스의 checked를 가져옴 > true/false
         var studentId = $('#studentId').val();               //입력된 id값
         if(test){
             setCookie('studentId',studentId,7);                      //key:"studentId",value:studentId,7일 > 7일동안 쿠키에 등록해 기억됨

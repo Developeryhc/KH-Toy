@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,8 @@
 <link rel="stylesheet" href="/resources/css/main/login_sign.css">
 
 <body>
+	<c:choose>
+	<c:when test="${empty sessionScope.s.studentId}">
     <div id="loader"></div>
     <div id="soup-container">
         <div id="segments">
@@ -88,6 +91,15 @@
             </form>
         </div>
     </div>
+    </c:when>
+    <c:otherwise>
+    	<!-- 세션에 객체 존재 시, 예약페이지로 이동 -->
+	    <script>
+	    	location.href="/reservationFrm.do";
+	    </script>
+    </c:otherwise>
+    </c:choose>
+    
 </body>
 
 </html>

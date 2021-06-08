@@ -12,7 +12,49 @@
 <script src="/resources/css/reservation/packages/interaction/main.js"></script>
 <script src="/resources/css/reservation/packages/daygrid/main.js"></script>
 </head>
-<body>
+  <body>
+    <div class="wrap">
+      <div class="pan">
+        <div class="header">
+          <div>
+            <div class="logo">DingCo</div>
+          </div>
+        </div>
 
-</body>
+        <div class="content" style="width: 900px; margin: 0 auto"></div>
+
+          </div>
+
+          <div class="service" style="display: none">
+
+          </div>
+
+          <div class="footer">
+            <div class="foot_logo">Director</div>
+            <div class="foot_pan">
+              <div class="foot_we">
+                <div>SeoJunsik</div>
+                <div>tjwnstlr3459@naver.com</div>
+                <div>#Representative</div>
+              </div>
+              <div class="foot_we">
+                <div>
+                  <div>SeoJunsik</div>
+                  <div>tjwnstlr3459@naver.com</div>
+                  <div>#Representative</div>
+                </div>
+              </div>
+              <div class="foot_we">
+                <div>
+                  <div>SeoJunsik</div>
+                  <div>tjwnstlr3459@naver.com</div>
+                  <div>#Representative</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
