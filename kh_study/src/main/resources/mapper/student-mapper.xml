@@ -10,9 +10,18 @@
 			student_pw as studentPw,
 			phone,
 			grade
-		from student where student_id=#{studentId}
-		<if test="studentPw != null">
-			and student_pw=#{studentPw}
+		from student where 
+		<if test="studentId != null and studentPw == null and phone == null">	<!-- 아이디 중복 검사 -->
+			student_id=#{studentId}
+		</if>
+		<if test="studentId != null and studentPw != null">	<!-- 로그인 또는 비밀번호 변경? -->
+			student_id=#{studentId} and student_pw=#{studentPw}
+		</if>
+		<if test="studentName != null and phone != null">	<!-- 아이디 찾기 -->
+			student_name=#{studentName} and phone=#{phone}
+		</if>
+		<if test="studentId != null and phone != null">		<!-- 비밀번호 찾기 -->
+			student_id=#{studentId} and phone=#{phone}
 		</if>
 	</select>
 	<select id="selectOpenCla" resultType="c">				<!-- 개강중인 반만 가져오기 -->

@@ -103,15 +103,18 @@ button {
   position: relative;
   display: flex;
   /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 .forgetId > *,
-.forgetPw > * {
+.forgetPw > *,
+.modifyPw > * {
   box-sizing: border-box;
 }
 .forgetId,
-.forgetPw {
+.forgetPw,
+.modifyPw {
   width: calc(100% / 2);
   height: 200px;
   background-color: #fff;
@@ -120,12 +123,14 @@ button {
   border-radius: 20px;
 }
 .forgetId > input:focus,
-.forgetPw > input:focus {
+.forgetPw > input:focus,
+.modifyPw > input:focus {
   background-color: #383838;
   color: #fff;
 }
 .forgetId > input:focus::placeholder,
-.forgetPw > input:focus::placeholder {
+.forgetPw > input:focus::placeholder
+.modifyPw > input:focus::placeholder {
   color: #fff;
 }
 /* 아이디 찾기 모달 창 영역 밖 설정 */
@@ -136,6 +141,10 @@ button {
 .forgetPw {
   right: calc(-100% / 2);
 }
+.modifyPw{
+	margin:auto;
+	display:none;
+}
 .forget-inputs {
   width: 80%;
   height: 30px;
@@ -145,14 +154,16 @@ button {
   transition-duration: 0.3s;
 }
 #forgetIdBtn,
-#forgetPwBtn {
+#forgetPwBtn,
+#modifyPwBtn {
   margin-top: 20px;
   color: #9368f7;
   background-color: rgb(84, 83, 85);
   cursor: pointer;
 }
 #forgetIdBtn:hover,
-#forgetPwBtn:hover {
+#forgetPwBtn:hover,
+#modifyPwBtn {
   background-color: #9368f7;
   color: #ddd;
 }

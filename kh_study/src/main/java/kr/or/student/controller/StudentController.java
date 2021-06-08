@@ -60,7 +60,28 @@ public class StudentController {
 		}
 		return "0";
 	}
-
+	//아이디 찾기
+	@ResponseBody
+	@RequestMapping(value="/forgetId.do", produces="application/json;charset=utf-8")
+	public String forgetId(Student s) {
+		Student st = service.selectOneStudent(s);
+		if(st != null) {
+			return new Gson().toJson(st);
+		}
+		return null;
+	}
+	//비밀번호 찾기
+	@ResponseBody
+	@RequestMapping(value="/forgetPw.do")
+	public String forgetPw(Student s) {
+		Student st = service.selectOneStudent(s);
+		if(st != null) {
+			return "1";
+		}
+		return "0";
+	}
+	
+	//마이페이지 이동
 	@RequestMapping(value="/mypage.do")
 	public String mypage(@SessionAttribute(required=false) Student s, Model model) {
 		Student student = service.selectOneStudent(s);

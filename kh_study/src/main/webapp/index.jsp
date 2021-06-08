@@ -48,6 +48,12 @@
                         <input type="text" name="phone" id="searchPwPhone" class="forget-inputs" placeholder="Phone" autocomplete="off">
                         <button id="forgetPwBtn" class="forget-inputs">Next</button>
                     </div>
+                    <div class="modifyPw">
+                        <h3>Modify Password</h3>
+                        <input type="password" name="studentPw" id="modifyPw" class="forget-inputs" placeholder="새 비밀번호" autocomplete="off">
+                        <input type="password" name="pwChk" id="modiPwChk" class="forget-inputs" placeholder="새 비밀번호 확인" autocomplete="off">
+                        <button id="modifyPwBtn" class="forget-inputs">Next</button>
+                    </div>
                 </div>
             </div>
             <div class="loginBox">
