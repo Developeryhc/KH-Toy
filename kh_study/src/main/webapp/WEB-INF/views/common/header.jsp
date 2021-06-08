@@ -3,6 +3,16 @@
 <link href="/resources/css/reservation/reservation_header.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/resources/css/common/header.css">
 
+<!-- jquery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<!-- JSTL Core -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- reservation.css -->
+<link href="/resources/css/reservation/reservation.css" rel="stylesheet" type="text/css" />
+<script src="/resources/javascript/reservation/header.js" type="text/javascript"></script>
+
+
 <!-- 메인달력 -->
 <link href="/resources/css/reservation/packages/core/main.css" rel="stylesheet" />
 <link href="/resources/css/reservation/packages/daygrid/main.css" rel="stylesheet" />
