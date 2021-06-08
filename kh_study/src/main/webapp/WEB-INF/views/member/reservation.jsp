@@ -9,10 +9,6 @@
 
 <!-- css -->
 <link href="/resources/css/reservation/reservation.css" rel="stylesheet" type="text/css" />
-<link href="/resources/css/reservation/reservation_header.css" rel="stylesheet" type="text/css" />
-<link href="/resources/css/reservation/reservation_footer.css" rel="stylesheet" type="text/css" />
-<link href="/resources/css/reservation/menuBar.css" rel="stylesheet" type="text/css" />
-
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <!DOCTYPE html>
@@ -219,71 +215,15 @@
       });
     });
   </script>
-  <style></style>
+  
+  
   <body>
-    <nav>
-      <div class="menu-btn">
-        <div class="line line__1"></div>
-        <div class="line line__2"></div>
-        <div class="line line__3"></div>
-      </div>
-
-      <div class="sub-menu-btn">
-        <div class="line line__1"></div>
-        <div class="line line__2"></div>
-      </div>
-
-      <ul class="nav-links">
-        <li class="link">
-          <a href="#">Home</a>
-        </li>
-        <li class="link">
-          <a href="#">RESERVATION</a>
-          <ol>
-            <li><a href="#">designers</a></li>
-            <li><a href="#">developers</a></li>
-          </ol>
-        </li>
-        <li class="link">
-          <a href="#">Work</a>
-          <ol>
-            <li><a href="#">web</a></li>
-            <li><a href="#">graphic </a></li>
-            <li><a href="#">apps </a></li>
-          </ol>
-        </li>
-        <li class="link">
-          <a href="#">Contact</a>
-          <ol>
-            <li><a href="#">Email</a></li>
-            <li><a href="#">Social</a></li>
-          </ol>
-        </li>
-        <li class="link">
-          <a href="#">follow me</a>
-          <ol>
-            <li>
-              <a target="_blank" href="https://twitter.com/DevLoop01">
-                Twitter <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a target="_blank" href="https://codepen.io/dev_loop/">
-                Codepen <i class="fab fa-codepen"></i>
-              </a>
-            </li>
-          </ol>
-        </li>
-      </ul>
-    </nav>
+   <!-- menuBar -->
+   <%@ include file="/WEB-INF/views/common/menuBar.jsp" %>
     <div class="wrap">
       <div class="pan">
-        <div class="header">
-          <div>
-            <div class="logo">DingCo</div>
-          </div>
-        </div>
-
+        <!-- header -->
+		<%@ include file="/WEB-INF/views/common/header.jsp" %>
         <div class="content" style="width: 900px; margin: 0 auto"></div>
         <!-- <div id="calendar"></div> -->
         <div id="test"></div>
@@ -348,7 +288,6 @@
                   <div class="ReserList">
                     <div>1</div>
                     <div>서준식</div>
-                    f
                     <div>Mybatis</div>
                     <div><input type="button" onclick="" value="cancle" /></div>
                   </div>
@@ -407,31 +346,8 @@
               </form>
             </div>
           </div>
-
-          <div class="footer">
-            <div class="foot_logo">Director</div>
-            <div class="foot_pan">
-              <div class="foot_we">
-                <div>SeoJunsik</div>
-                <div>tjwnstlr3459@naver.com</div>
-                <div>#Representative</div>
-              </div>
-              <div class="foot_we">
-                <div>
-                  <div>SeoJunsik</div>
-                  <div>tjwnstlr3459@naver.com</div>
-                  <div>#Representative</div>
-                </div>
-              </div>
-              <div class="foot_we">
-                <div>
-                  <div>SeoJunsik</div>
-                  <div>tjwnstlr3459@naver.com</div>
-                  <div>#Representative</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- footer -->
+          <%@ include file="/WEB-INF/views/common/footer.jsp" %>
         </div>
       </div>
     </div>
