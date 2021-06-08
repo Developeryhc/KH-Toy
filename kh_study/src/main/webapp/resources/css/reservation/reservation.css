@@ -34,7 +34,7 @@ div {
   width: 100%;
   position: absolute;
   z-index: 10;
-  top: 300px;
+  top: 200px;
 }
 .service_modal {
   border: 0px solid black;
@@ -44,16 +44,17 @@ div {
   border-radius: 10px;
   background-color: rgba(100, 100, 100, 0.953);
 }
-.service_modal input {
+.service_modal .service_info input {
   width: 100px;
 }
 .service_info {
-  height: 50px;
+  height: 40px;
   width: 200px;
   text-align: center;
   margin-left: 40px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
+
 .info_ser {
   border: 0px solid black;
   width: 100%;
@@ -64,25 +65,29 @@ div {
   float: right;
 }
 .insert_btn {
-  width: 150px;
+  width: 130px;
   height: 30px;
-  margin-left: 100px;
+  margin-left: 95px;
   border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(238, 238, 238, 0.837);
+  color: rgb(28, 28, 28);
+  font-weight: bold;
 }
 #test {
   width: 65%;
   margin: 0 auto;
 }
 .Reservation > div {
-  border: 1px solid rgba(2, 2, 2, 0.719);
+  border: 1px solid rgba(131, 131, 131, 0.719);
   float: left;
   width: 250px;
   height: 400px;
-  margin-left: 35px;
+  margin-right: 20px;
 }
 .list_pan {
   border: 0px solid black;
-  width: 1100px;
+  width: 800px;
   margin: 0 auto;
 }
 .Reservation {
@@ -132,4 +137,9 @@ div {
 }
 .ReserList > div:last-child {
   width: 20%;
+}
+.reser_key {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 16px;
 }
