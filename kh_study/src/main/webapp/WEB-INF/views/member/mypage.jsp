@@ -13,48 +13,10 @@
 <script src="/resources/css/reservation/packages/daygrid/main.js"></script>
 </head>
   <body>
-    <div class="wrap">
-      <div class="pan">
-        <div class="header">
-          <div>
-            <div class="logo">DingCo</div>
-          </div>
-        </div>
-
-        <div class="content" style="width: 900px; margin: 0 auto"></div>
-
-          </div>
-
-          <div class="service" style="display: none">
-
-          </div>
-
-          <div class="footer">
-            <div class="foot_logo">Director</div>
-            <div class="foot_pan">
-              <div class="foot_we">
-                <div>SeoJunsik</div>
-                <div>tjwnstlr3459@naver.com</div>
-                <div>#Representative</div>
-              </div>
-              <div class="foot_we">
-                <div>
-                  <div>SeoJunsik</div>
-                  <div>tjwnstlr3459@naver.com</div>
-                  <div>#Representative</div>
-                </div>
-              </div>
-              <div class="foot_we">
-                <div>
-                  <div>SeoJunsik</div>
-                  <div>tjwnstlr3459@naver.com</div>
-                  <div>#Representative</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<div class="content">
+		<h1>안녕하세요 ~</h1>
+	</div>
+  	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
   </body>
 </html>

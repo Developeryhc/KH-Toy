@@ -6,8 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
@@ -59,5 +61,10 @@ public class StudentController {
 		return "0";
 	}
 	//로그인 시 페이지 이동
-	
+	@RequestMapping(value="/mypage.do")
+	public String mypage(@SessionAttribute(required=false) Student s, Model model) {
+		Student student = service.selectOneStudent(s);
+		model.addAttribute("student", student);
+		return "member/mypage";
+	}
 }

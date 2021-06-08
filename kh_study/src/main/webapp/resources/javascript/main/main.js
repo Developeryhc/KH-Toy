@@ -50,13 +50,11 @@ $(document).ready(function() {
           if(currentPage == 0){
               location.href="/reservationFrm.do"
           }else if(currentPage == 1){
-            // location.href="#"
             modalShow(1);
           }else if(currentPage == 2){
-            // location.href="#"
             modalShow(2);
           }else if(currentPage == 3){
-            location.href="#"
+            location.href="/mypage.do"
             console.log("관리자");
           }
       });
