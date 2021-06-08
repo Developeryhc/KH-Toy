@@ -220,13 +220,14 @@
   <body>
    <!-- menuBar -->
    <%@ include file="/WEB-INF/views/common/menuBar.jsp" %>
-    <div class="wrap">
-      <div class="pan">
+   
+   
         <!-- header -->
 		<%@ include file="/WEB-INF/views/common/header.jsp" %>
         <div class="content" style="width: 900px; margin: 0 auto"></div>
         <!-- <div id="calendar"></div> -->
         <div id="test"></div>
+        
         <div>
           <div class="list_pan">
             <div class="logo">Today</div>
@@ -346,10 +347,8 @@
               </form>
             </div>
           </div>
-          <!-- footer -->
-          <%@ include file="/WEB-INF/views/common/footer.jsp" %>
         </div>
-      </div>
-    </div>
+        <!-- footer -->
+          <%@ include file="/WEB-INF/views/common/footer.jsp" %>
   </body>
 </html>

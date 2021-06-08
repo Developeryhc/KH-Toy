@@ -37,7 +37,7 @@
 
 </style>
 <div class="footer">
-  <div class="foot_logo">Director</div>
+  <div class="foot_logo" style="width: 1100px;">Director</div>
   <div class="foot_pan">
     <div class="foot_we">
         <div>SeoJunsik</div>
