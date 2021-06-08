@@ -60,7 +60,7 @@ public class StudentController {
 		}
 		return "0";
 	}
-	//로그인 시 페이지 이동
+
 	@RequestMapping(value="/mypage.do")
 	public String mypage(@SessionAttribute(required=false) Student s, Model model) {
 		Student student = service.selectOneStudent(s);
