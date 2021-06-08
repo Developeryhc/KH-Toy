@@ -1,40 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- 메인달력 -->
-<link href="/resources/css/reservation/packages/core/main.css" rel="stylesheet" />
-<link href="/resources/css/reservation/packages/daygrid/main.css" rel="stylesheet" />
-<script src="/resources/css/reservation/packages/core/main.js"></script>
-<script src="/resources/css/reservation/packages/interaction/main.js"></script>
-<script src="/resources/css/reservation/packages/daygrid/main.js"></script>
-
 <!-- css -->
 <link href="/resources/css/reservation/reservation.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"
-    />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
-    <!-- 미니달력 -->
-    <link
-      rel="stylesheet"
-      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
-    <link rel="stylesheet" href="/resources/demos/style.css" />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -215,15 +189,12 @@
       });
     });
   </script>
-  
-  
   <body>
-   
    <!-- header -->
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
    <div class="content" style="width: 900px; margin: 0 auto"></div>
    <!-- <div id="calendar"></div> -->
-   <div id="test"></div>
+   <div id="test" style="width: 800px"></div>
    
    <div>
      <div class="list_pan">
