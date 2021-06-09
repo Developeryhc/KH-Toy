@@ -37,27 +37,45 @@
             <div class="videoBox">
                 <div class="forgetModal">
                     <div class="forgetId">
-                        <h3>Search ID</h3>
-                        <input type="text" name="studentName" id="searchIdName" class="forget-inputs" placeholder="Name" autocomplete="off">
-                        <input type="text" name="phone" id="searchIdPhone" class="forget-inputs" placeholder="Phone" autocomplete="off">
+                        <h3 class="h3">Search ID</h3>
+                        <h5 class="h5">Name</h5>
+                        <input type="text" name="studentName" id="searchIdName" class="forget-inputs" placeholder="" autocomplete="off">
+	                	<h5 class="h5">Phone</h5>
+                        <div class="forget-phoneBox">
+	                        <input type="text" id="fIdPhone1" class="forget-phones" name="phone1"  autocomplete="off" minlength="3" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+	                        -
+	                        <input type="text" id="fIdPhone2" class="forget-phones" name="phone2" autocomplete="off" minlength="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+	                        -
+	                        <input type="text" id="fIdPhone3" class="forget-phones" name="phone3" autocomplete="off" minlength="4" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        </div>
                         <button id="forgetIdBtn" class="forget-inputs">Search</button>
                     </div>
                     <div class="forgetPw">
-                        <h3>Search Password</h3>
-                        <input type="text" name="studentId" id="searchPwId" class="forget-inputs" placeholder="ID" autocomplete="off">
-                        <input type="text" name="phone" id="searchPwPhone" class="forget-inputs" placeholder="Phone" autocomplete="off">
+                        <h3 class="h3">Search Password</h3>
+                        <h5 class="h5">ID</h5>
+                        <input type="text" name="studentId" id="searchPwId" class="forget-inputs" placeholder="" autocomplete="off" >
+                        <h5 class="h5">Phone</h5>
+                        <div class="forget-phoneBox">
+	                        <input type="text" id="fPwPhone1" class="forget-phones" name="phone1" autocomplete="off" minlength="3" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+	                        -
+	                        <input type="text" id="fPwPhone2" class="forget-phones" name="phone2" autocomplete="off" minlength="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+	                        -
+	                        <input type="text" id="fPwPhone3" class="forget-phones" name="phone3" autocomplete="off" minlength="4" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        </div>
                         <button id="forgetPwBtn" class="forget-inputs">Next</button>
                     </div>
                     <div class="modifyPw">
-                        <h3>Modify Password</h3>
-                        <input type="password" name="studentPw" id="modifyPw" class="forget-inputs" placeholder="새 비밀번호" autocomplete="off">
-                        <input type="password" name="pwChk" id="modiPwChk" class="forget-inputs" placeholder="새 비밀번호 확인" autocomplete="off">
+                        <h3 class="h3">Modify Password</h3>
+                        <h5 class="h5">새 비밀번호</h5>
+                        <input type="password" name="studentPw" id="modifyPw" class="forget-inputs" placeholder="" autocomplete="off">
+                        <h5 class="h5">새 비밀번호 확인</h5>
+                        <input type="password" name="pwChk" id="modiPwChk" class="forget-inputs" placeholder="" autocomplete="off">
                         <button id="modifyPwBtn" class="forget-inputs">Next</button>
                     </div>
                 </div>
             </div>
             <div class="loginBox">
-                <h2 class="headText">SING IN</h2>
+                <h2 class="headText">SIGN IN</h2>
                 <form action="#" method="post">
                     <input type="text" name="studentId" id="studentId" class="loginInfo" placeholder="ID" autocomplete="off">
                     <input type="password" name="studentPw" id="studentPw" class="loginInfo" placeholder="Password">
@@ -88,7 +106,6 @@
                 </div>
                 <div class="sign-inputs">
                     <input type="text" name="phone1" class="phones" minlength="3" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
-                    <!-- <input type="text" name="phone1" class="phones" minlength="3" maxlength="3" readonly value="010">- -->
                     <input type="text" name="phone2" class="phones" minlength="3"  maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
                     <input type="text" name="phone3" class="phones" minlength="4" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>

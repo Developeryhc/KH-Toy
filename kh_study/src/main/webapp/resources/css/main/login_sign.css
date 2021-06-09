@@ -124,13 +124,15 @@ button {
 }
 .forgetId > input:focus,
 .forgetPw > input:focus,
-.modifyPw > input:focus {
+.modifyPw > input:focus,
+.forget-phones:focus {
   background-color: #383838;
   color: #fff;
 }
 .forgetId > input:focus::placeholder,
-.forgetPw > input:focus::placeholder
-.modifyPw > input:focus::placeholder {
+.forgetPw > input:focus::placeholder,
+.modifyPw > input:focus::placeholder,
+.forget-phones:focus::placeholder {
   color: #fff;
 }
 /* 아이디 찾기 모달 창 영역 밖 설정 */
@@ -153,17 +155,47 @@ button {
   border: 1px solid #888;
   transition-duration: 0.3s;
 }
+.forget-phoneBox{
+	width:80%;
+	height:30px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	box-sizing:border-box;
+	margin:auto;
+}
+.forget-phones{
+	width:30%;
+	height:30px;
+	border:1px solid #888;
+	outline:none;
+	padding:0 10px;
+	transition-duration: 0.3s;
+}
+.h3{
+	width:180px;
+	margin:auto;
+	margin-top:10px;
+	padding-bottom:5px;
+	border-bottom:1px solid #c72fe6;
+}
+.h5{
+	margin:5px 0 0 0;
+	padding:0 30px;
+	text-align:left;
+	color:#666;
+}
 #forgetIdBtn,
 #forgetPwBtn,
 #modifyPwBtn {
-  margin-top: 20px;
+  margin-top: 10px;
   color: #9368f7;
   background-color: rgb(84, 83, 85);
   cursor: pointer;
 }
 #forgetIdBtn:hover,
 #forgetPwBtn:hover,
-#modifyPwBtn {
+#modifyPwBtn:hover {
   background-color: #9368f7;
   color: #ddd;
 }

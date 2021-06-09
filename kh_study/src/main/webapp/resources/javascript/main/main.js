@@ -204,7 +204,8 @@ $(document).ready(function() {
       }
     });
   });
-  $('.sign-inputs').keydown(function(){
+  //모달 영역 아래의 후손 중 모든 input의  스페이스바 입력 금지 함수
+  $('.modal input').keydown(function(){
     var kcode = event.keyCode;
     if(kcode == 32) event.returnValue = false;    
   });
@@ -216,12 +217,21 @@ $(document).ready(function() {
       type : "post",
       data : {studentId : id},
       success : function(data){
-        if(data == '1'){
+        if(data == '1'){										//DB에서 조회되어 존재하는 아이디(중복된 ID)인 경우
           $('.regs').eq(0).css('color','red');
           $('.regs').eq(0).html('사용중인 ID 입니다.');
         }else{
-          $('.regs').eq(0).css('color','green');
-          $('.regs').eq(0).html('사용 가능한 ID 입니다.');
+          if(regId()){											//중복되지 않았지만 reg검사에서 true(!사용해 true됨)일 
+	      	  $('.regs').eq(0).css('color','red');          	
+	          $('.regs').eq(0).html('양식이 틀립니다.');
+          }else{
+	          $('.regs').eq(0).css('color','green');
+	          $('.regs').eq(0).html('사용 가능한 ID 입니다.');
+          }
+          if($('#signId').val().length == 0){
+          	$($('#signId')).css('box-shadow','none');    		//아무것도 입력되지 않았을 때
+          	$('.regs').eq(0).html('');
+          }
         }
       }
     });
@@ -230,7 +240,6 @@ $(document).ready(function() {
   $('#signUpBtn').click(function(){
     $('.joinForm input').css('box-shadow','none');
     let checkReg = false;
-    console.log($('#stuClass').val());
     checkReg = regId();		//아이디 유효성
     checkReg = regPw();		//비밀번호 유효성
     checkReg = chkPw();		//비밀번호 확인
@@ -248,6 +257,7 @@ $(document).ready(function() {
     const no = $('#stuClass').val();
     //phone1+phone2+phone3 합 처리
     const phone = $('.phones').eq(0).val()+"-"+$('.phones').eq(1).val()+"-"+$('.phones').eq(2).val();
+    console.log(phone);
     //ajax로 전송해 값을 받아와 결과를 제공하고 login창을 띄워준다
     var obj = {
       studentId : id,
@@ -261,13 +271,13 @@ $(document).ready(function() {
       type : "post",
       data : obj,
       success : function(data){
-        if(data == 1){
+        if(data == 1){				//정상적인 회원가입된 경우
           alert('가입되었습니다');
-          modalHide(2);
-          currentPage--;
-          arrangeCurrentPage();
+          modalHide(2);				//가입 모달 닫아주기
+          currentPage--;			//로그인 current로 --;
+          arrangeCurrentPage();		
           scrambleOthers();
-          modalShow(1);
+          modalShow(1);				//로그인 모달 보여주기
         }else{
           alert('다시 시도해주세요');
         }
@@ -277,17 +287,19 @@ $(document).ready(function() {
   //아이디 찾기 버튼 클릭 시 동작 함수 > ajax통해 db에서 조회
   $('#forgetIdBtn').click(function(){
     var searchIdName = $('#searchIdName').val();
-    var searchIdPhone = $('#searchIdPhone').val();
+    const fIdPhone = $('#fIdPhone1').val()+"-"+$('#fIdPhone2').val()+"-"+$('#fIdPhone3').val();
     $.ajax({
       url : "/forgetId.do",
       type : "post",
-      data : {studentName : searchIdName, phone : searchIdPhone},
+      data : {studentName : searchIdName, phone : fIdPhone},
       success : function(data){
-        if(data != null){
+      console.log(data);
+        if(data != ''){
           alert(`아이디는 ${data.studentId} 입니다`);
           $('#studentId').val(data.studentId);
           $('.forgetId').css('left','calc(-100%/2)');
           $('.forget-inputs').val('');
+          $('.forget-phones').val('');
         }else{
           alert('없는 회원이거나 정보가 일치하지 않습니다.');
         }
@@ -297,14 +309,13 @@ $(document).ready(function() {
   //비밀번호 찾기 버튼 클릭 시 동작 함수 > ajax를 통해 db에서 조회 후 새 비밀번호 창 출력
   $('#forgetPwBtn').click(function(){
     var searchPwId = $('#searchPwId').val();
-    var searchPwPhone = $('#searchPwPhone').val();
+    const fPwPhone = $('#fPwPhone1').val()+"-"+$('#fPwPhone2').val()+"-"+$('#fPwPhone3').val();
     $.ajax({
       url : "/forgetPw.do",
       type : "post",
-      data : {studentId : searchPwId, phone : searchPwPhone},
+      data : {studentId : searchPwId, phone : fPwPhone},
       success : function(data){
         if(data == 1){
-          alert('비밀번호 테스트');
           $('.forgetPw').css('right','calc(-100%/2)');
           //$('.forget-inputs').val('');
           $('.modifyPw').show();
@@ -319,7 +330,7 @@ $(document).ready(function() {
   	const pw = $('#modifyPw').val();
   	const pwChk = $('#modiPwChk').val();
   	const id = $('#searchPwId').val();
-  	const phone = $('#searchPwPhone').val();
+  	const phone = $('#fPwPhone1').val()+"-"+$('#fPwPhone2').val()+"-"+$('#fPwPhone3').val();
   	const reg = /^[a-zA-Z0-9]{8,20}$/;
   	if(!reg.test(pw)){
   		alert('영어 대/소문자,숫자 필수 8자 이상입니다');
@@ -366,20 +377,32 @@ $(document).ready(function() {
     $('.forgetPw').css('right','calc(-100%/2)');
     $('.forgetId').css('left','calc(100%/2)');
     $('.forgetId').css('transform','translateX(-50%)');
+    $('.forgetId input').val('');
   });
   //비밀번호 찾기 버튼 클릭 이벤트 함수
   $('#forgetPw').click(function(){
     $('.forgetId').css('left','calc(-100%/2)');
     $('.forgetPw').css('right','calc(100%/2)');
     $('.forgetPw').css('transform','translateX(50%)');
+    $('.forgetPw input').val('');
   });
   //회원가입 전화번호 입력 시 자동 포커스 이동 for문 > 함수
   for(var i=0;i<document.getElementsByClassName('phones').length;i++){
     document.getElementsByClassName('phones')[i].addEventListener('keyup',function(){
         if(this.name == 'phone1' && this.value.length === 3){
-            document.getElementsByName('phone2')[0].focus();
+            (this.nextSibling).nextSibling.focus();
         }else if(this.name == 'phone2' && this.value.length === 4){
-            document.getElementsByName('phone3')[0].focus();
+            (this.nextSibling).nextSibling.focus();
+        }
+    });
+  }
+  //아이디 찾기의 전화번호 입력 시 자동 포커스 이동
+  for(var i=0;i<document.getElementsByClassName('forget-phones').length;i++){
+    document.getElementsByClassName('forget-phones')[i].addEventListener('keyup',function(){
+        if(this.name == 'phone1' && this.value.length === 3){
+            (this.nextSibling).nextSibling.focus();						//nextSibling : 다음 형제요소 / previousSibling : 이전 형제요소
+        }else if(this.name == 'phone2' && this.value.length === 4){
+            (this.nextSibling).nextSibling.focus();
         }
     });
   }
@@ -432,7 +455,7 @@ function modifyPw(id,pw){
 				$('.modifyPw').hide();
 				$('#modifyPw').val('');
 				$('#modifyChk').val('');
-				$('.forget-inputs').val('');
+				$('.forgetModal input').val('');
 			}else{
 				//변경이 실패된 경우
 				alert('다시 시도해주세요');
@@ -470,20 +493,22 @@ function modalShow(num){
 //modal hide 함수
 function modalHide(num){ 
   $('.modal').css('display','none');
-  if(num == 1){       //매개변수가 1 : 모달로그인창
+  if(num == 1){      								//매개변수가 1 : 모달로그인창
     $('.modalBox-login').css('display','none');         //로그인창 hide
     $('.modalBox-login').css('top','-400px');           //로그인창 위치 초기화
-    $('.loginInfo').val('');      // 로그인 창의 입력된 정보 초기화
-    $('.forget-inputs').val('');  // 아이디/비밀번호 찾기의 입력된 정보 초기화
+    $('.loginInfo').val('');     			 			// 로그인 창의 입력된 정보 초기화
+    $('.forgetModal input').val('');  						// 아이디/비밀번호 찾기의 입력된 정보 초기화
     $('.forgetId').css('left','calc(-100% / 2)');
     $('.forgetPw').css('right','calc(-100% / 2)');
-  }else if(num == 2){   //2 : 모달회원가입창
+    
+  }else if(num == 2){   							//2 : 모달회원가입창
     $('.modalBox-signUp').css('display','none');        //가입창 hide
     $('.modalBox-signUp').css('bottom','-650px');       //가입창 위치 초기화
-    $('.sign-inputs').val('');    						//입력된 정보 초기화
+    $('.modalBox-signUp input').val('');    			//입력된 정보 초기화
     $('.regs').html('');								//중복 span text 초기화
     $('.joinForm input').css('box-shadow','none');		//input box-shadow 효과 초기화
     $('#stuClass').css('box-shadow','none');			//select box-shadow 효과 초기화
+    $('#stuClass').val('default').attr('selected',true);//select의 value가 'default'인 option을 selected한다.
   }
 }
 //페이지가 로드되면 ajax로 db에서 개강중인 반을 가져와 append시키는 함수
@@ -504,7 +529,7 @@ function loadClass(){
 //아이디 유효성 검사
 function regId(){
   //reg : 유효성 검사 변수
-  const reg = /^[a-zA-Z0-9]{6,20}$/;
+  const reg = /^[a-zA-Z]{1}[a-zA-Z0-9]{5,20}$/;
   const id = $('#signId').val();
   if(!reg.test(id) || id == ''){
     $('#signId').css('box-shadow','0px 0px 3px red');
@@ -558,9 +583,9 @@ function classChk(){
 }
 //전화번호 유효성 검사
 function regPhone(){
-  const phone1 = $('[name=phone1]').val();
-  const phone2 = $('[name=phone2]').val();
-  const phone3 = $('[name=phone3]').val();
+  const phone1 = $('.phones').eq(0).val();
+  const phone2 = $('.phones').eq(1).val();
+  const phone3 = $('.phones').eq(2).val();
   if(!(phone1.length == 3 && phone1 == '010' && phone2.length >= 3 && phone3.length == 4)){
     $('.phones').css('box-shadow','0px 0px 3px red');
     //alert('전화번호를 정확히 입력하세요');
