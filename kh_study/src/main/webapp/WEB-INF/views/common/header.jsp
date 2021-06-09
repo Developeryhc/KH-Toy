@@ -93,6 +93,6 @@
 </nav>
 <div class="header">
   <div>
-    <div class="logo">DingCo</div>
+    <div class="main_logo"><img src="/resources/image/main/logo(white)2.png"></div>
   </div>
 </div>
