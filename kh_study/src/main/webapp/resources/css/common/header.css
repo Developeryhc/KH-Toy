@@ -9,19 +9,16 @@
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
-  margin-top: 20px;
+  padding-top: 20px;
   border: none;
   border-bottom: 1px solid black;
 }
-
 
 /* 메뉴바 */
 * {
   margin: 0;
   padding: 0;
 }
-
-
 
 nav {
   --transition-time: 500ms;
@@ -229,7 +226,6 @@ nav.sub-menu-open .nav-links .hover-el {
 body {
   position: relative;
   width: 100%;
-  height: 100vh;
   font-family: "Montserrat";
   background-color: rgb(238, 238, 238);
   background-size: cover;
