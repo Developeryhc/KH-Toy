@@ -187,7 +187,7 @@ $(document).ready(function() {
   //로그인 버튼 클릭 시 ajax 통해 db조회
   $('#loginBtn').click(function(){
     const id = $('#studentId').val();
-    const pw = $('[name=studentPw]').val();
+    const pw = $('#studentPw').val();
     console.log(id);
     console.log(pw);
     $.ajax({
@@ -306,7 +306,7 @@ $(document).ready(function() {
         if(data == 1){
           alert('비밀번호 테스트');
           $('.forgetPw').css('right','calc(-100%/2)');
-          $('.forget-inputs').val('');
+          //$('.forget-inputs').val('');
           $('.modifyPw').show();
         }else{
           alert('없는 회원이거나 정보가 일치하지 않습니다.');
@@ -316,11 +316,20 @@ $(document).ready(function() {
   });
   //비밀번호 수정 버튼 클릭 시 동작 함수
   $('#modifyPwBtn').click(function(){
-  	var pw = $('#modifyPw').val();
-  	var pwChk = $('#modiPwChk').val();
+  	const pw = $('#modifyPw').val();
+  	const pwChk = $('#modiPwChk').val();
+  	const id = $('#searchPwId').val();
+  	const phone = $('#searchPwPhone').val();
+  	const reg = /^[a-zA-Z0-9]{8,20}$/;
+  	if(!reg.test(pw)){
+  		alert('영어 대/소문자,숫자 필수 8자 이상입니다');
+  		return;
+  	}
   	if(pw != pwChk){
   		alert('입력한 비밀번호가 동일해야합니다');							//06/09/02:10 - 여기서 시작해야됨
+  		return;
   	}
+  	checkPw(id,phone,pw);		//잊어버렸던 기존 비밀번호와 동일한 경우 다른 새 비밀번호를 받기 위한 check함수
   });
   //회원가입 input:focus 함수
   $('.sign-inputs').focus(function(){
@@ -390,6 +399,48 @@ function cookieChk(){
           deleteCookie('studentId',studentId);
       }
       location.href = "/reservationFrm.do"; 
+}
+//새 비밀번호를 db에서 확인하여 잊어버린 기존 비밀번호와 동일한 지 체크
+function checkPw(id,phone,pw){
+	$.ajax({
+		url : "/checkPw.do",
+		type : "post",
+		data : {studentId : id, phone : phone, studentPw : pw},
+		success : function(data){
+			if(data == '1'){
+				//잊어버린 기존 비밀번호와 동일한 경우 > 비정상/input값 비워주기
+				alert('기존 비밀번호와 다른 비밀번호를 입력하세요');       
+				$('#modifyPw').val('');
+				$('#modiPwChk').val('');   
+			}else{
+				//동일하지 않고 새로운 비밀번호인 경우 > 정상 처리 로직
+				modifyPw(id,pw);
+			}
+		}
+	});
+}
+//비밀번호를 체크가 끝난 뒤 변경시키는 함수
+function modifyPw(id,pw){
+	$.ajax({
+		url : "/modifyPw.do",
+		type : "post",
+		data : {studentId : id, studentPw : pw},
+		success : function(data){
+			if(data == '1'){
+				//변경이 성공인 경우
+				alert('변경되었습니다');
+				$('.modifyPw').hide();
+				$('#modifyPw').val('');
+				$('#modifyChk').val('');
+				$('.forget-inputs').val('');
+			}else{
+				//변경이 실패된 경우
+				alert('다시 시도해주세요');
+				$('#modifyPw').val('');
+				$('#modifyChk').val('');
+			}
+		}
+	});
 }
 //modal show 함수
 function modalShow(num){

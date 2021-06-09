@@ -33,4 +33,17 @@ public class StudentService {
 	public int insertStudent(Student s) {
 		return dao.insertStudent(s);
 	}
+	//기존 비밀번호 새 비밀번호 체크
+	public Student checkPw(Student s) {
+		List list = dao.checkPw(s);
+		Student st = null;
+		if(!list.isEmpty()) {
+			st = (Student)list.get(0);
+		}
+		return st;
+	}
+	//새 비밀번호로 변경
+	public int updatePwStudent(Student s) {
+		return dao.updatePwStudent(s);
+	}
 }

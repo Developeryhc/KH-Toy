@@ -27,5 +27,13 @@ public class StudentDao {
 	public int insertStudent(Student s) {
 		return session.insert("student.insertStudent",s);
 	}
+	//비밀먼호 체크 select
+	public List checkPw(Student s) {
+		return session.selectList("student.checkPw",s);
+	}
+	//비밀번호 update
+	public int updatePwStudent(Student s) {
+		return session.update("student.updatePwStudent",s);
+	}
 	
 }
