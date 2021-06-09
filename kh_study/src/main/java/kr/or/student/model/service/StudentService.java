@@ -30,6 +30,7 @@ public class StudentService {
 		return (ArrayList<cla>)dao.selectOpenCla();
 	}
 	//회원가입 insert
+	@Transactional
 	public int insertStudent(Student s) {
 		return dao.insertStudent(s);
 	}
@@ -43,6 +44,7 @@ public class StudentService {
 		return st;
 	}
 	//새 비밀번호로 변경
+	@Transactional
 	public int updatePwStudent(Student s) {
 		return dao.updatePwStudent(s);
 	}

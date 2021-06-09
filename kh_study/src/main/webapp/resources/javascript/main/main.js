@@ -409,7 +409,7 @@ function checkPw(id,phone,pw){
 		success : function(data){
 			if(data == '1'){
 				//잊어버린 기존 비밀번호와 동일한 경우 > 비정상/input값 비워주기
-				alert('기존 비밀번호와 다른 비밀번호를 입력하세요');       
+				alert('비밀번호 .. 모르는거 아닌거 같은데 .. ? 그걸로 로그인 해볼래 .. ?');       
 				$('#modifyPw').val('');
 				$('#modiPwChk').val('');   
 			}else{

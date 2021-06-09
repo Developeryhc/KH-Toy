@@ -10,19 +10,24 @@
 			student_pw as studentPw,
 			phone,
 			grade
-		from student where 
-		<if test="studentId != null and studentPw == null and phone == null">	<!-- 아이디 중복 검사 -->
-			student_id=#{studentId}
-		</if>
-		<if test="studentId != null and studentPw != null">	<!-- 로그인 또는 비밀번호 변경? -->
-			student_id=#{studentId} and student_pw=#{studentPw}
-		</if>
-		<if test="studentName != null and phone != null">	<!-- 아이디 찾기 -->
-			student_name=#{studentName} and phone=#{phone}
-		</if>
-		<if test="studentId != null and phone != null">		<!-- 비밀번호 찾기 -->
-			student_id=#{studentId} and phone=#{phone}
-		</if>
+		from student where
+		<choose>
+			<when test="studentId == null">	<!-- 아이디 찾기 -->
+				student_name=#{studentName} and phone=#{phone}
+			</when>
+			<when test="studentPw != null"> <!-- 로그인 또는 비밀번호 변경? -->
+				student_id=#{studentId} and student_pw=#{studentPw}
+			</when>
+			<when test="phone != null"> <!-- 비밀번호 찾기 -->
+				student_id=#{studentId} and phone=#{phone}
+			</when>
+			<when test="studentNo != null"> <!-- 마이페이지 -->
+				student_no = #{studentNo}
+			</when>
+			<otherwise>	<!-- 아이디 중복 -->
+				student_id=#{studentId}
+			</otherwise>
+		</choose>
 	</select>
 	<!-- 기존 비밀번호와 새 입력 비밀번호 체크 -->
 	<select id="checkPw" parameterType="s" resultType="s">

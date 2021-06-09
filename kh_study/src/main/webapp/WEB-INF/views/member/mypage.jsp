@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 <style>
 	.layout-wrap{
+		box-sizing: border-box;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: center;
 	}
 	.layout{
 		width: 400px;
@@ -60,7 +61,8 @@
 			</div>
 		</div>
 		<div class="layout">
-			현재 총 자습일
+
+			<h1>54 Day</h1>
 		</div>
 		<div class="layout">
 			현재 총 자습 시간 : 543 H
