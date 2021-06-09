@@ -1,53 +1,63 @@
 package kr.or.reservation.model.vo;
 
+import java.sql.Date;
+
 public class Reservation {
-	private int reservationNo;
-	private int reservationStudent;
-	private String reservationDate;
-	private String reservationKey;
-	private String reservationEnd;
+	private int reserNo;
+	private int reserStudent;
+	private Date date;
+	private char reserKey;
+	private Date reserStart;
+	private Date reserEnd;
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Reservation(int reservationNo, int reservationStudent, String reservationDate, String reservationKey,
-			String reservationEnd) {
-		this.reservationNo = reservationNo;
-		this.reservationStudent = reservationStudent;
-		this.reservationDate = reservationDate;
-		this.reservationKey = reservationKey;
-		this.reservationEnd = reservationEnd;
+	public Reservation(int reserNo, int reserStudent, Date date, char reserKey, Date reserStart, Date reserEnd) {
+		super();
+		this.reserNo = reserNo;
+		this.reserStudent = reserStudent;
+		this.date = date;
+		this.reserKey = reserKey;
+		this.reserStart = reserStart;
+		this.reserEnd = reserEnd;
 	}
-	public int getReservationNo() {
-		return reservationNo;
+	public int getReserNo() {
+		return reserNo;
 	}
-	public void setReservationNo(int reservationNo) {
-		this.reservationNo = reservationNo;
+	public void setReserNo(int reserNo) {
+		this.reserNo = reserNo;
 	}
-	public int getReservationStudent() {
-		return reservationStudent;
+	public int getReserStudent() {
+		return reserStudent;
 	}
-	public void setReservationStudent(int reservationStudent) {
-		this.reservationStudent = reservationStudent;
+	public void setReserStudent(int reserStudent) {
+		this.reserStudent = reserStudent;
 	}
-	public String getReservationDate() {
-		return reservationDate;
+	public Date getDate() {
+		return date;
 	}
-	public void setReservationDate(String reservationDate) {
-		this.reservationDate = reservationDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
-	public String getReservationKey() {
-		return reservationKey;
+	public char getReserKey() {
+		return reserKey;
 	}
-	public void setReservationKey(String reservationKey) {
-		this.reservationKey = reservationKey;
+	public void setReserKey(char reserKey) {
+		this.reserKey = reserKey;
 	}
-	public String getReservationEnd() {
-		return reservationEnd;
+	public Date getReserStart() {
+		return reserStart;
 	}
-	public void setReservationEnd(String reservationEnd) {
-		this.reservationEnd = reservationEnd;
+	public void setReserStart(Date reserStart) {
+		this.reserStart = reserStart;
 	}
-	
+	public Date getReserEnd() {
+		return reserEnd;
+	}
+	public void setReserEnd(Date reserEnd) {
+		this.reserEnd = reserEnd;
+	}
 	
 }
+	

@@ -100,40 +100,51 @@
   <div class="service" style="display: none">
     <div class="service_modal">
       <div class="logo">예약</div>
-      <form action="#" method="post">
+      <form action="/insertReser.do" method="post">
         <div class="service_info">
-          <div class="info_ser" style="display: none;">
+          <div class="info_ser" style="display: block;">
             학생번호 <input type="text" name="reserNo" class="service_name" value="" />
           </div>
           
           <div class="info_ser">
-            이름 <input type="text" name="reserName" class="service_name" value="" />
+            이름 <input type="text" name="reserStudent" class="service_name" value="" />
           </div>
         </div>
         <div class="service_info">
           <div class="info_ser">
-            클래스 <input type="text" name="class" class="service_class" />
+            클래스 <input type="text" class="service_class" value=""/>
           </div>
         </div>
         <div class="service_info">
           <div class="info_ser">
-            Date <input type="text" id="datepicker" class="service_date"/>
+            Date <input type="text" name="date" class="service_date"/>
           </div>
         </div>
         <div>
           <div class="service_info">
             <div class="info_ser" style="margin-left: 10px;">
-              종료시간 <select type="text" name="name" style="width: 100px; margin-left: 20px;">
+              시작시간     <select  name="reserStart" style="width: 104px; margin-left: 20px;">
+                <option>4:20</option>
+                <option>6:20</option>
+              </select>
+            </div>
+          </div>
+         <div class="service_info">
+            <div class="info_ser" style="margin-left: 10px;">
+              종료시간     <select  name="reserEnd" style="width: 104px; margin-left: 20px;">
                 <option>6:00</option>
+                <option>6:30</option>
                 <option>7:00</option>
+                <option>7:30</option>
                 <option>8:00</option>
+                <option>8:30</option>
                 <option>9:00</option>
               </select>
             </div>
           </div>
         </div>
-        <input class="insert_btn" style="margin-top: 20px;"  type="button" value="등록" /> <input
-          class="insert_btn" type="button" value="취소" />
+        <input class="insert_btn" style="margin-top: 20px;"  type="submit" value="등록" /><br> 
+        <input class="insert_btn" type="button" value="취소" />
       </form>
     </div>
   </div>
