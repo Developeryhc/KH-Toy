@@ -1,5 +1,9 @@
+<%@page import="kr.or.student.model.vo.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	Student s = (Student)session.getAttribute("s");
+	%>
 <link href="/resources/css/reservation/reservation_header.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/resources/css/common/header.css">
 
@@ -7,6 +11,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <!-- JSTL Core -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 
 <!-- reservation.css -->
 <link href="/resources/css/reservation/reservation.css" rel="stylesheet" type="text/css" />
@@ -35,6 +41,8 @@
       href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
 
 <nav>
   <div class="menu-btn">
