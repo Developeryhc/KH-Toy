@@ -5,15 +5,15 @@ import java.sql.Date;
 public class Reservation {
 	private int reserNo;
 	private int reserStudent;
-	private Date date;
+	private String date;
 	private char reserKey;
-	private Date reserStart;
-	private Date reserEnd;
+	private String reserStart;
+	private String reserEnd;
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Reservation(int reserNo, int reserStudent, Date date, char reserKey, Date reserStart, Date reserEnd) {
+	public Reservation(int reserNo, int reserStudent, String date, char reserKey, String reserStart, String reserEnd) {
 		super();
 		this.reserNo = reserNo;
 		this.reserStudent = reserStudent;
@@ -34,10 +34,10 @@ public class Reservation {
 	public void setReserStudent(int reserStudent) {
 		this.reserStudent = reserStudent;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public char getReserKey() {
@@ -46,18 +46,19 @@ public class Reservation {
 	public void setReserKey(char reserKey) {
 		this.reserKey = reserKey;
 	}
-	public Date getReserStart() {
+	public String getReserStart() {
 		return reserStart;
 	}
-	public void setReserStart(Date reserStart) {
+	public void setReserStart(String reserStart) {
 		this.reserStart = reserStart;
 	}
-	public Date getReserEnd() {
+	public String getReserEnd() {
 		return reserEnd;
 	}
-	public void setReserEnd(Date reserEnd) {
+	public void setReserEnd(String reserEnd) {
 		this.reserEnd = reserEnd;
 	}
 	
+
 }
 	
