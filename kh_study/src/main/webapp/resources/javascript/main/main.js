@@ -176,7 +176,7 @@ $(document).ready(function() {
     }
   });
   //html 전체에 클릭 이벤트 함수
-  document.addEventListener('click',function(event){
+  document.addEventListener('mousedown',function(event){
     //모달box외 영역 클릭 시 모달 닫기
     if(event.target.className=='modal' && $(event.target).children('.modalBox-login').css('display')=='flex'){
       modalHide(1);
@@ -327,6 +327,8 @@ $(document).ready(function() {
   });
   //비밀번호 수정 버튼 클릭 시 동작 함수
   $('#modifyPwBtn').click(function(){
+  	$('#modifyPw').css('box-shadow','none');
+  	$('#modiPwChk').css('box-shadow','none');
   	const pw = $('#modifyPw').val();
   	const pwChk = $('#modiPwChk').val();
   	const id = $('#searchPwId').val();
@@ -334,10 +336,12 @@ $(document).ready(function() {
   	const reg = /^[a-zA-Z0-9]{8,20}$/;
   	if(!reg.test(pw)){
   		alert('영어 대/소문자,숫자 필수 8자 이상입니다');
+  		$('#modifyPw').css('box-shadow','0px 0px 3px red');
   		return;
   	}
   	if(pw != pwChk){
   		alert('입력한 비밀번호가 동일해야합니다');							//06/09/02:10 - 여기서 시작해야됨
+  		$('#modiPwChk').css('box-shadow','0px 0px 3px red');
   		return;
   	}
   	checkPw(id,phone,pw);		//잊어버렸던 기존 비밀번호와 동일한 경우 다른 새 비밀번호를 받기 위한 check함수
@@ -374,6 +378,7 @@ $(document).ready(function() {
   });
   //아이디 찾기 버튼 클릭 이벤트 함수
   $('#forgetId').click(function(){
+  	$('.modifyPw').hide();
     $('.forgetPw').css('right','calc(-100%/2)');
     $('.forgetId').css('left','calc(100%/2)');
     $('.forgetId').css('transform','translateX(-50%)');
@@ -381,6 +386,7 @@ $(document).ready(function() {
   });
   //비밀번호 찾기 버튼 클릭 이벤트 함수
   $('#forgetPw').click(function(){
+  	$('.modifyPw').hide();
     $('.forgetId').css('left','calc(-100%/2)');
     $('.forgetPw').css('right','calc(100%/2)');
     $('.forgetPw').css('transform','translateX(50%)');
@@ -432,9 +438,10 @@ function checkPw(id,phone,pw){
 		success : function(data){
 			if(data == '1'){
 				//잊어버린 기존 비밀번호와 동일한 경우 > 비정상/input값 비워주기
-				alert('비밀번호 .. 모르는거 아닌거 같은데 .. ? 그걸로 로그인 해볼래 .. ?');       
+				alert('비밀번호 .. 모르는거 아닌거 같은데 .. ? 그걸로 로그인 해볼래 .. ?');
+				$('.modifyPw').hide();       
 				$('#modifyPw').val('');
-				$('#modiPwChk').val('');   
+				$('#modiPwChk').val('');
 			}else{
 				//동일하지 않고 새로운 비밀번호인 경우 > 정상 처리 로직
 				modifyPw(id,pw);
@@ -454,13 +461,13 @@ function modifyPw(id,pw){
 				alert('변경되었습니다');
 				$('.modifyPw').hide();
 				$('#modifyPw').val('');
-				$('#modifyChk').val('');
+				$('#modiPwChk').val('');
 				$('.forgetModal input').val('');
 			}else{
 				//변경이 실패된 경우
 				alert('다시 시도해주세요');
 				$('#modifyPw').val('');
-				$('#modifyChk').val('');
+				$('#modiPwChk').val('');
 			}
 		}
 	});
@@ -493,15 +500,16 @@ function modalShow(num){
 //modal hide 함수
 function modalHide(num){ 
   $('.modal').css('display','none');
-  if(num == 1){      								//매개변수가 1 : 모달로그인창
+  if(num == 1){      									//매개변수가 1 : 모달로그인창
     $('.modalBox-login').css('display','none');         //로그인창 hide
     $('.modalBox-login').css('top','-400px');           //로그인창 위치 초기화
     $('.loginInfo').val('');     			 			// 로그인 창의 입력된 정보 초기화
-    $('.forgetModal input').val('');  						// 아이디/비밀번호 찾기의 입력된 정보 초기화
-    $('.forgetId').css('left','calc(-100% / 2)');
-    $('.forgetPw').css('right','calc(-100% / 2)');
+    $('.forgetModal input').val('');  					// 아이디/비밀번호 찾기의 입력된 정보 초기화
+    $('.forgetId').css('left','calc(-100% / 2)');		//아이디찾기 모달창 원위치
+    $('.forgetPw').css('right','calc(-100% / 2)');		//비밀번호 찾기 모달창 원위치
+    $('.modifyPw').hide();								//비밀번호 수정 모달창 원위치(hide)
     
-  }else if(num == 2){   							//2 : 모달회원가입창
+  }else if(num == 2){   								//2 : 모달회원가입창
     $('.modalBox-signUp').css('display','none');        //가입창 hide
     $('.modalBox-signUp').css('bottom','-650px');       //가입창 위치 초기화
     $('.modalBox-signUp input').val('');    			//입력된 정보 초기화
