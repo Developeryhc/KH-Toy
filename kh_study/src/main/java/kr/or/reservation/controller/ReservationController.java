@@ -18,22 +18,22 @@ public class ReservationController {
 	
 	@RequestMapping(value="/reservationFrm.do")
 	public String reservationFrm(Model model) {
-		/*
+		
 		ArrayList<Reservation> list1 = service.allReser1();
 		ArrayList<Reservation> list2 = service.allReser2();
 		ArrayList<Reservation> list3 = service.allReser3();
 		model.addAttribute("list1",list1);
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
-		*/
+		
 		return "member/reservation";
 	}
 	
 	@RequestMapping(value = "/insertReser.do")
 	public String insertReser(Reservation r,Model model) throws ParseException {
 
-		r.setReserStart(r.getDate()+" "+r.getReserStart());
-		r.setReserEnd(r.getDate()+" "+r.getReserEnd());
+		r.setReserStart(r.getReserDate()+" "+r.getReserStart());
+		r.setReserEnd(r.getReserDate()+" "+r.getReserEnd());
 
 		
 			

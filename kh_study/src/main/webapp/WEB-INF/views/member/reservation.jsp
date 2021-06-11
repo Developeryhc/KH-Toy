@@ -25,10 +25,10 @@
 				<div>A</div>
 				<div style="height: 70%">
 					<div class="ReserList">
-						<div>No.</div>
+						<div style="width: 15%;">No.</div>
 						<div>Name</div>
 						<div>Content</div>
-						<div>Modi</div>
+						<div style="width: 35%;">Modi</div>
 					</div>
 					<div class="ReserList">
 						<c:forEach items="${list1 }" var="l" varStatus="i">
@@ -36,7 +36,59 @@
 							<div>${l.reserStudent }</div>
 							<div>${l.reserEnd }</div>
 							<div>
-								<input type="button" onclick="cancle()" value="cancle" />
+								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				<div style="height: 20%">
+					<p class="reser_key">수령인</p>
+					<hr width="80%" style="margin: 0 auto;" />
+					서준식
+				</div>
+			</div>
+			<div class="list">
+				<div>A</div>
+				<div style="height: 70%">
+					<div class="ReserList">
+						<div style="width: 15%;">No.</div>
+						<div>Name</div>
+						<div>Content</div>
+						<div style="width: 35%;">Modi</div>
+					</div>
+					<div class="ReserList">
+						<c:forEach items="${list2 }" var="l" varStatus="i">
+							<div>${i.count }</div>
+							<div>${l.reserStudent }</div>
+							<div>${l.reserEnd }</div>
+							<div>
+								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				<div style="height: 20%">
+					<p class="reser_key">수령인</p>
+					<hr width="80%" style="margin: 0 auto;" />
+					서준식
+				</div>
+			</div>
+			<div class="list">
+				<div>A</div>
+				<div style="height: 70%">
+					<div class="ReserList">
+						<div style="width: 15%;">No.</div>
+						<div>Name</div>
+						<div>Content</div>
+						<div style="width: 35%;">Modi</div>
+					</div>
+					<div class="ReserList">
+						<c:forEach items="${list3 }" var="l" varStatus="i">
+							<div>${i.count }</div>
+							<div>${l.reserStudent }</div>
+							<div>${l.reserEnd }</div>
+							<div>
+								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
 							</div>
 						</c:forEach>
 					</div>
@@ -48,58 +100,7 @@
 				</div>
 			</div>
 
-			<div class="list">
-				<div>B</div>
-				<div style="height: 70%">
-					<div class="ReserList">
-						<div>No.</div>
-						<div>Name</div>
-						<div>Content</div>
-						<div>Modi</div>
-					</div>
-					<div class="ReserList">
-						<c:forEach items="${list2 }" var="l" varStatus="i">
-							<div>${i.count }</div>
-							<div>${l.reserStudent }</div>
-							<div>${l.reserEnd }</div>
-							<div>
-								<input type="button" onclick="" value="cancle" />
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-				<div style="height: 20%">
-					<p class="reser_key">수령인</p>
-					<hr width="80%" style="margin: 0 auto;" />
-					서준식
-				</div>
-			</div>
-			<div class="list">
-				<div>C</div>
-				<div style="height: 70%">
-					<div class="ReserList">
-						<div>No.</div>
-						<div>Name</div>
-						<div>Content</div>
-						<div>Modi</div>
-					</div>
-					<div class="ReserList">
-						<c:forEach items="${list3 }" var="l" varStatus="i">
-							<div>${i.count }</div>
-							<div>${l.reserStudent }</div>
-							<div>${l.reserEnd }</div>
-							<div>
-								<input type="button" onclick="" value="cancle" />
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-				<div style="height: 20%">
-					<p class="reser_key">수령인</p>
-					<hr width="80%" style="margin: 0 auto;" />
-					서준식
-				</div>
-			</div>
+			
 		</div>
 	</div>
 
