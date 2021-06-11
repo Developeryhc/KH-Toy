@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
-import kr.or.cla.model.vo.cla;
+import kr.or.cla.model.vo.Cla;
 import kr.or.student.model.service.StudentService;
 import kr.or.student.model.vo.Student;
 
@@ -36,7 +36,7 @@ public class StudentController {
 	@ResponseBody
 	@RequestMapping(value="/searchClass.do", produces="application/json;charset=utf-8")
 	public String searchClass() {
-		ArrayList<cla> list = service.selectOpenCla();
+		ArrayList<Cla> list = service.selectOpenCla();
 		return new Gson().toJson(list);
 	}
 	//회원가입 처리

@@ -28,7 +28,6 @@
 
 <!-- 미니달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-<link rel="stylesheet" href="/resources/demos/style.css" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -58,21 +57,20 @@
 
   <ul class="nav-links">
     <li class="link">
-      <a href="#">Home</a>
+      <a href="/logout.do">Logout</a>
     </li>
     <li class="link">
-      <a href="#">RESERVATION</a>
+      <a href="/reservationFrm.do">Reservation</a>
       <ol>
         <li><a href="#">designers</a></li>
         <li><a href="#">developers</a></li>
       </ol>
     </li>
     <li class="link">
-      <a href="#">Work</a>
+      <a>Mypage</a>
       <ol>
-        <li><a href="#">web</a></li>
-        <li><a href="#">graphic </a></li>
-        <li><a href="#">apps </a></li>
+        <li><a href="#">Modify Info</a></li>
+        <li><a href="/mypage.do">My Chart </a></li>
       </ol>
     </li>
     <li class="link">

@@ -1,16 +1,16 @@
 package kr.or.cla.model.vo;
 
-public class cla {
+public class Cla {
 	private int classNo;
 	private String className;
 	private String classSubject;
 	private String classStart;
 	private String classEnd;
-	public cla() {
+	public Cla() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public cla(int classNo, String className, String classSubject, String classStart, String classEnd) {
+	public Cla(int classNo, String className, String classSubject, String classStart, String classEnd) {
 		this.classNo = classNo;
 		this.className = className;
 		this.classSubject = classSubject;

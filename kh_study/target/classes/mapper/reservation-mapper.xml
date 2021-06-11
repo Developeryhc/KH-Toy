@@ -18,7 +18,7 @@
 	select 
 		reservation_no as reserNo,
 		reservation_student as reserStudent,
-		reservation_Date as date,
+		reservation_date as date,
 		reservation_key as reserKey,
 		reservation_start as reserStart,
 		reservation_end as reserEnd

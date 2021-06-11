@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.cla.model.vo.cla;
+import kr.or.cla.model.vo.Cla;
 import kr.or.student.model.vo.Student;
 
 @Repository

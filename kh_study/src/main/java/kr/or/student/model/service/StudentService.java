@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.or.cla.model.vo.cla;
+import kr.or.cla.model.vo.Cla;
 import kr.or.student.model.dao.StudentDao;
 import kr.or.student.model.vo.Student;
 
@@ -26,8 +26,8 @@ public class StudentService {
 		return stu;
 	}
 	//개강되어있는 반 전부 가져오기
-	public ArrayList<cla> selectOpenCla() {
-		return (ArrayList<cla>)dao.selectOpenCla();
+	public ArrayList<Cla> selectOpenCla() {
+		return (ArrayList<Cla>)dao.selectOpenCla();
 	}
 	//회원가입 insert
 	@Transactional
