@@ -15,9 +15,9 @@
 	<insert id="insertOneRecord" parameterType="r">
 		INSERT INTO record VALUES(
 			record_seq.NEXTVAL,
-			#{reservationStudent},
-			#{reservationDate},
-			TO_NUMBER(TO_CHAR(#{reservationEnd}, 'YYYY-MM-DD HH24:MI'-TO_CHAR(#{reservationStart}, 'YYYY-MM-DD HH24:MI'))*1440
+			#{reserStudent},
+			#{reserDate},
+			CEIL(TO_NUMBER( TO_DATE(#{reserEnd}, 'YYYY-MM-DD HH24:MI')-TO_DATE(#{reserStart}, 'YYYY-MM-DD HH24:MI') )*1440),
 			1, 'N'
 		)
 	</insert>
