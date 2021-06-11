@@ -50,4 +50,8 @@
 	<update id="updatePwStudent" parameterType="s">
 		update student set student_pw=#{studentPw} where student_id=#{studentId}
 	</update>
+	<!-- 마이페이지 수정 -->
+	<update id="updateOneStudent" parameterType="s">
+		UPDATE student SET student_name = #{studentName}, phone = #{phone}, address = #{address} WHERE student_id = #{studentId}
+	</update>
 </mapper>

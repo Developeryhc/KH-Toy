@@ -35,5 +35,8 @@ public class StudentDao {
 	public int updatePwStudent(Student s) {
 		return session.update("student.updatePwStudent",s);
 	}
+	public int updateOneStudent(Student s) {
+		return session.update("student.updateOneStudent", s);
+	}
 	
 }
