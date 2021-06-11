@@ -134,7 +134,7 @@
 				</div>
 				<div class="service_info">
 					<div class="info_ser">
-						Date <input type="text" name="date" class="service_date"
+						Date <input type="text" name="reserDate" class="service_date"
 							value="sysdate" />
 					</div>
 				</div>

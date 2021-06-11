@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.or.record.model.service.RecordService;
 import kr.or.reservation.model.service.ReservationService;
 import kr.or.reservation.model.vo.Reservation;
 
@@ -15,7 +16,8 @@ import kr.or.reservation.model.vo.Reservation;
 public class ReservationController {
 	@Autowired
 	private ReservationService service;
-	
+	@Autowired
+	private RecordService recService;
 	@RequestMapping(value="/reservationFrm.do")
 	public String reservationFrm(Model model) {
 		
@@ -39,11 +41,15 @@ public class ReservationController {
 			
 		int result = service.insertReser(r);
 		if(result>0) {
-			model.addAttribute("msg","자습신청 완료");
+			result = recService.insertRecord(r);
+			if(result>0) {
+				model.addAttribute("msg","자습신청 완료");
+			}else {
+				model.addAttribute("msg","자습신청 실패 에러코드[00IC]");
+			}
 		}else {
-			model.addAttribute("msg","자습신청 실패");
+			model.addAttribute("msg","자습신청 실패 에러코드[00IR]");
 		}
-		
 		model.addAttribute("loc","/reservationFrm.do");
 		return "common/msg";
 	}
