@@ -109,4 +109,18 @@ public class StudentController {
 		model.addAttribute("student", student);
 		return "member/mypage";
 	}
+	
+	//마이페이지 수정
+	@RequestMapping(value="/memberUpdate.do")
+	public String mypage(Student s, HttpSession session, Model model) {
+		int result = service.updateOneStudent(s);
+		if(result>0) {
+			session.setAttribute("s", s);
+			model.addAttribute("msg", "수정완료");
+		}else {
+			model.addAttribute("msg", "수정오류 에러코드[00US]");			
+		}
+		model.addAttribute("loc", "/mypage");
+		return "common/msg";
+	}
 }
