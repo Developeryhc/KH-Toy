@@ -7,7 +7,7 @@
 	insert into reservation values(
 		reservation_seq.nextval,
 		#{reserStudent},
-		#{date},
+		#{reserDate},
 		#{reserKey},
 		TO_DATE(#{reserStart},'YYYY-MM-DD HH24:MI'),
 		TO_DATE(#{reserEnd},'YYYY-MM-DD HH24:MI')
