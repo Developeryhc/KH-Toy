@@ -14,7 +14,12 @@
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	<div class="content" style="width: 900px; margin: 0 auto"></div>
+	<div class="content" style="width: 100%;margin: 0 auto">
+		<div class="adver">
+			<a href="#"><img src="/resources/image/advertisement/product1.jpg"></a>
+			
+		</div>
+	</div>
 	<!-- <div id="calendar"></div> -->
 	<div id="test" style="width: 800px"></div>
 	<div class="list_pan">

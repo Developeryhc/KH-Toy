@@ -164,7 +164,6 @@ $(document).ready(function() {
   }
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@라이브러리 외 구현 스크립트 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
   //modal 'x'버튼 클릭 이벤트 함수
   $('#closeModalBtn').click(function(){
     const login = $('.modalBox-login').css('display');  //로그인 창의 display 상태

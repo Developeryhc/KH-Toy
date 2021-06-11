@@ -125,5 +125,20 @@ console.log(stu);
       $(".insert_btn").click(function () {
         $(".service").css("display", "none");
       });
+      
+      
+      
+//-----------------------사이드 메뉴 링크-----------------------------------------------
 
+		//lick > 사이드 메뉴의 li태그 아래의 a태그 href를 실행하느 함수
+		$('.link').click(function(){
+			location.href = "/logout.do";
+		});
+		$(window).resize(function(){
+			if($(this).innerWidth() < 1260){
+				$('.adver').css('right','-200px');
+			}else{
+				$('.adver').css('right',' 20px');
+			}
+		});
     });

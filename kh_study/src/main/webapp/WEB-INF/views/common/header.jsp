@@ -1,23 +1,22 @@
 <%@page import="kr.or.student.model.vo.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- JSTL Core -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%
 	Student s = (Student)session.getAttribute("s");
 	%>
+
+
+
 <link href="/resources/css/reservation/reservation_header.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/resources/css/common/header.css">
-
 <!-- jquery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
-<!-- JSTL Core -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 
 <!-- reservation.css -->
 <link href="/resources/css/reservation/reservation.css" rel="stylesheet" type="text/css" />
 <script src="/resources/javascript/reservation/header.js" type="text/javascript"></script>
-
 
 <!-- 메인달력 -->
 <link href="/resources/css/reservation/packages/core/main.css" rel="stylesheet" />
@@ -30,19 +29,14 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    
-
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"/>
+  
+<!-- header.jsp HTML 태그 -->  
 <nav>
   <div class="menu-btn">
     <div class="line line__1"></div>
@@ -99,6 +93,6 @@
 </nav>
 <div class="header">
   <div>
-    <div class="main_logo"><img src="/resources/image/main/logo(white)2.png"></div>
+    <div class="main_logo"><a href="/"><img src="/resources/image/main/logo(white)2.png"></a></div>
   </div>
 </div>
