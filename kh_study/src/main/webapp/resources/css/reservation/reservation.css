@@ -117,7 +117,7 @@ div {
 }
 .ReserList > div {
   height: 25px;
-  width: 32.5%;
+  width: 25%;
   border: 0px solid black;
   float: left;
   box-sizing: border-box;
@@ -133,12 +133,12 @@ div {
   border-radius: 5px;
   cursor: pointer;
 }
-.ReserList > div:first-child {
+/* .ReserList > div:first-child {
   width: 15%;
-}
-.ReserList > div:last-child {
+} */
+/* .ReserList > div:last-child {
   width: 20%;
-}
+} */
 .reser_key {
   margin-bottom: 10px;
   font-weight: bold;

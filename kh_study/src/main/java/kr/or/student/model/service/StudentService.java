@@ -48,4 +48,10 @@ public class StudentService {
 	public int updatePwStudent(Student s) {
 		return dao.updatePwStudent(s);
 	}
+	
+	//마이페이지 변경
+	@Transactional
+	public int updateOneStudent(Student s) {
+		return dao.updateOneStudent(s);
+	}
 }

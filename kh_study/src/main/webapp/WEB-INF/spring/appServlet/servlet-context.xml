@@ -54,8 +54,10 @@
 	
 	<!-- 서버 시작 시 자동으로 생성될 객체(클래스)의 범위 설정 -->
 	<context:component-scan base-package="kr.or.iei" />
+	<context:component-scan base-package="kr.or.cla" />
 	<context:component-scan base-package="kr.or.student" />
 	<context:component-scan base-package="kr.or.reservation" />
+	<context:component-scan base-package="kr.or.record" />
 	
 	
 	

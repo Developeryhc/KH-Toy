@@ -7,7 +7,7 @@
 	insert into reservation values(
 		reservation_seq.nextval,
 		#{reserStudent},
-		#{date},
+		#{reserDate},
 		#{reserKey},
 		TO_DATE(#{reserStart},'YYYY-MM-DD HH24:MI'),
 		TO_DATE(#{reserEnd},'YYYY-MM-DD HH24:MI')
@@ -18,30 +18,30 @@
 	select 
 		reservation_no as reserNo,
 		reservation_student as reserStudent,
-		reservation_date as date,
+		reservation_date as reserDate,
 		reservation_key as reserKey,
 		reservation_start as reserStart,
-		reservation_end as reserEnd
-	 from reservation where reservation_student=22;
+		to_char(reservation_end,'HH:mi') as reserEnd
+	 from reservation where reservation_student=25
 </select>
 <select id="allReser2" resultType="r">
 	select 
 		reservation_no as reserNo,
 		reservation_student as reserStudent,
-		reservation_Date as date,
+		reservation_Date as reserDate,
 		reservation_key as reserKey,
 		reservation_start as reserStart,
-		reservation_end as reserEnd
-	 from reservation where reservation_student=23;
+		to_char(reservation_end,'HH:mi') as reserEnd
+	 from reservation where reservation_student=26
 </select>
 <select id="allReser3" resultType="r">
 	select 
 		reservation_no as reserNo,
 		reservation_student as reserStudent,
-		reservation_Date as date,
+		reservation_Date as reserDate,
 		reservation_key as reserKey,
 		reservation_start as reserStart,
-		reservation_end as reserEnd
-	 from reservation where reservation_student=24;
+		to_char(reservation_end,'HH:mi') as reserEnd
+	 from reservation where reservation_student=27
 </select>
 </mapper>

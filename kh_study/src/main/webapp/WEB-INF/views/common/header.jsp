@@ -69,8 +69,8 @@
     <li class="link">
       <a>Mypage</a>
       <ol>
-        <li><a href="#">Modify Info</a></li>
-        <li><a href="/mypage.do">My Chart </a></li>
+        <li><a href="/mypage.do">Modify Info</a></li>
+        <li><a href="/mychart.do">My Chart </a></li>
       </ol>
     </li>
     <li class="link">
