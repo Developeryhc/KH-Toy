@@ -12,4 +12,13 @@
 			record_key AS recordKey
 		FROM record WHERE record_student = #{studentNo}
 	</select>
+	<insert id="insertOneRecord" parameterType="r">
+		INSERT INTO record VALUES(
+			record_seq.NEXTVAL,
+			#{reservationStudent},
+			#{reservationDate},
+			TO_NUMBER(TO_CHAR(#{reservationEnd}, 'YYYY-MM-DD HH24:MI'-TO_CHAR(#{reservationStart}, 'YYYY-MM-DD HH24:MI'))*1440
+			1, 'N'
+		)
+	</insert>
 </mapper>
