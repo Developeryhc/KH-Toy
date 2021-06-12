@@ -129,6 +129,7 @@
 
 
 	<!-- 예약창 -->
+	<%if(session.getAttribute("s") != null){ %>
 	<div class="service" style="display: none">
 		<div class="service_modal">
 			<div class="logo">예약</div>
@@ -192,6 +193,7 @@
 			</form>
 		</div>
 	</div>
+	<%} %>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
