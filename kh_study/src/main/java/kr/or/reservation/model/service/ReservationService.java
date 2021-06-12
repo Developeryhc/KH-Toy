@@ -42,4 +42,8 @@ public class ReservationService {
 		return dao.keyReser3();
 	}
 
+	public int reserDelete(int studentNo) {
+		return dao.reserDelete(studentNo);
+	}
+
 }

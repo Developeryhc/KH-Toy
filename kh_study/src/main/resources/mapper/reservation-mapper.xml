@@ -15,6 +15,7 @@
 		)
 </insert>
 
+<!-- 자습인원 출력 -->
 <select id="allReser1" resultType="r">
 SELECT 
     reservation_no as reserNo,
@@ -37,6 +38,7 @@ SELECT
     STUDENT_NAME AS name
 FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=23
 </select>
+
 <select id="allReser3" resultType="r">
 SELECT 
     reservation_no as reserNo,
@@ -50,8 +52,9 @@ FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.R
 </select>
 
 
+<!-- key수령인 -->
 <select id="key1" resultType="String">
-	select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=22)
+select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=22)
 </select>
 <select id="key2" resultType="String">
 select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=23)
@@ -60,7 +63,9 @@ select student_name as studentName from student where student_no=(SELECT  min(re
 select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=24)
 </select>
 
-
+<delete id="deleteReser" parameterType="int">
+delete from reservation where reservation_No=#{studentNo} 
+</delete>
 
 
 

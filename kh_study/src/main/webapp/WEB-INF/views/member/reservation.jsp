@@ -1,7 +1,8 @@
 <%@page import="kr.or.student.model.vo.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!-- jquery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,14 +16,14 @@
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	<div class="content" style="width: 100%;margin: 0 auto">
+	<!-- <div class="content" style="width: 100%;margin: 0 auto">
 		<div class="adver">
 			<a href="#"><img src="/resources/image/advertisement/product1.jpg"></a>
 			
 		</div>
-	</div>
+	</div> -->
 	<!-- <div id="calendar"></div> -->
-	<div id="test" style="width: 800px"></div>
+	<div id="test" style="width: 800px;"></div>
 	<div class="list_pan">
 		<div class="logo">Today</div>
 		<br>
@@ -31,19 +32,27 @@
 				<div>A</div>
 				<div style="height: 70%">
 					<div class="ReserList">
-						<div style="width: 15%;">No.</div>
+						<div>No.</div>
 						<div>Name</div>
-						<div>Content</div>
-						<div style="width: 35%;">Modi</div>
+						<div>EndTime</div>
+						<div>Modi</div>
 					</div>
 					<div class="ReserList">
 						<c:forEach items="${list1 }" var="l" varStatus="i">
 							<div>${i.count }</div>
 							<div>${l.name }</div>
 							<div>${l.reserEnd }</div>
+							<div style="display: none">${l.reserNo }</div>
 							<div>
-								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
+							
+							<%if(session.getAttribute("s")!=null){%>
+								<c:if test="${l.reserStudent eq s.studentNo}">
+									<input style="width: 30px;" type="button" onclick="cancle(${l.reserNo })" value="x" />
+								</c:if>
+							<%} %>
 							</div>
+							
+							
 						</c:forEach>
 					</div>
 				</div>
@@ -57,18 +66,22 @@
 				<div>B</div>
 				<div style="height: 70%">
 					<div class="ReserList">
-						<div style="width: 15%;">No.</div>
+						<div>No.</div>
 						<div>Name</div>
-						<div>Content</div>
-						<div style="width: 35%;">Modi</div>
+						<div>EndTime</div>
+						<div>Modi</div>
 					</div>
 					<div class="ReserList">
 						<c:forEach items="${list2 }" var="l" varStatus="i">
 							<div>${i.count }</div>
-							<div>${l.reserStudent }</div>
+							<div>${l.name }</div>
 							<div>${l.reserEnd }</div>
 							<div>
-								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
+								<%if(session.getAttribute("s")!=null){%>
+								<c:if test="${l.reserStudent eq s.studentNo}">
+									<input style="width: 30px;" type="button" onclick="cancle(${l.reserNo })" value="x" />
+								</c:if>
+								<%} %>
 							</div>
 						</c:forEach>
 					</div>
@@ -83,18 +96,22 @@
 				<div>C</div>
 				<div style="height: 70%">
 					<div class="ReserList">
-						<div style="width: 15%;">No.</div>
+						<div>No.</div>
 						<div>Name</div>
-						<div>Content</div>
-						<div style="width: 35%;">Modi</div>
+						<div>EndTime</div>
+						<div>Modi</div>
 					</div>
 					<div class="ReserList">
 						<c:forEach items="${list3 }" var="l" varStatus="i">
 							<div>${i.count }</div>
-							<div>${l.reserStudent }</div>
+							<div>${l.name }</div>
 							<div>${l.reserEnd }</div>
 							<div>
-								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
+							<%if(session.getAttribute("s")!=null){%>
+								<c:if test="${l.reserStudent eq s.studentNo}">
+									<input style="width: 30px;" type="button" onclick="cancle(${l.reserNo })" value="x" />
+								</c:if>
+							<%} %>
 							</div>
 						</c:forEach>
 					</div>
@@ -150,8 +167,8 @@
 						<div class="info_ser" style="margin-left: 10px;">
 							시작시간 <select name="reserStart"
 								style="width: 104px; margin-left: 20px;">
-								<option>04:20</option>
 								<option>06:20</option>
+								<option>04:20</option>
 							</select>
 						</div>
 					</div>
@@ -159,7 +176,6 @@
 						<div class="info_ser" style="margin-left: 10px;">
 							종료시간 <select name="reserEnd"
 								style="width: 104px; margin-left: 20px;">
-								<option>06:00</option>
 								<option>06:30</option>
 								<option>07:00</option>
 								<option>07:30</option>
@@ -179,4 +195,20 @@
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
+<script>
+function cancle(No){
+	if(confirm("자습을 취소하시겠습니까?")){
+		location.href="/reserDelete.do?studentNo="+No;
+	}
+	
+}
+</script>
 </html>
+
+
+
+
+
+
+
+
