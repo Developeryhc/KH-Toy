@@ -12,11 +12,11 @@ console.log(stu);
         //     alert("제발");
         //     },
         dateClick: function (data) {
-
-	          $(".service").css("display", "block");
+          if(stu != null){
+            $(".service").css("display", "block");
 	          $(".service_date").val(data.dateStr);
 	          console.log(data.dateStr);
-
+          }
         },
       });
       test.render();

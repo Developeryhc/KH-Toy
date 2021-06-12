@@ -11,37 +11,71 @@
 		#{reserKey},
 		TO_DATE(#{reserStart},'YYYY-MM-DD HH24:MI'),
 		TO_DATE(#{reserEnd},'YYYY-MM-DD HH24:MI')
+		
 		)
 </insert>
 
 <select id="allReser1" resultType="r">
-	select 
-		reservation_no as reserNo,
-		reservation_student as reserStudent,
-		reservation_date as reserDate,
-		reservation_key as reserKey,
-		reservation_start as reserStart,
-		to_char(reservation_end,'HH:mi') as reserEnd
-	 from reservation where reservation_student=25
+SELECT 
+    reservation_no as reserNo,
+    reservation_student as reserStudent,
+    reservation_date  as reserDate,
+    reservation_key as reserKey,
+    reservation_start as reserStart,
+    to_char(reservation_end,'HH:mi') as reserEnd,
+    STUDENT_NAME AS name
+FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=22
 </select>
 <select id="allReser2" resultType="r">
-	select 
-		reservation_no as reserNo,
-		reservation_student as reserStudent,
-		reservation_Date as reserDate,
-		reservation_key as reserKey,
-		reservation_start as reserStart,
-		to_char(reservation_end,'HH:mi') as reserEnd
-	 from reservation where reservation_student=26
+SELECT 
+    reservation_no as reserNo,
+    reservation_student as reserStudent,
+    reservation_date  as reserDate,
+    reservation_key as reserKey,
+    reservation_start as reserStart,
+    to_char(reservation_end,'HH:mi') as reserEnd,
+    STUDENT_NAME AS name
+FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=23
 </select>
 <select id="allReser3" resultType="r">
-	select 
-		reservation_no as reserNo,
-		reservation_student as reserStudent,
-		reservation_Date as reserDate,
-		reservation_key as reserKey,
-		reservation_start as reserStart,
-		to_char(reservation_end,'HH:mi') as reserEnd
-	 from reservation where reservation_student=27
+SELECT 
+    reservation_no as reserNo,
+    reservation_student as reserStudent,
+    reservation_date  as reserDate,
+    reservation_key as reserKey,
+    reservation_start as reserStart,
+    to_char(reservation_end,'HH:mi') as reserEnd,
+    STUDENT_NAME AS name
+FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=24
 </select>
+
+
+<select id="key1" resultType="String">
+	select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=22)
+</select>
+<select id="key2" resultType="String">
+select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=23)
+</select>
+<select id="key3" resultType="String">
+select student_name as studentName from student where student_no=(SELECT  min(reservation_STUDENT) FROM RESERVATION A, STUDENT B WHERE A.RESERVATION_STUDENT = B.STUDENT_NO AND A.RESERVATION_DATE &lt; SYSDATE AND B.STUDENT_CLASS=24)
+</select>
+
+
+
+
+
+
+
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

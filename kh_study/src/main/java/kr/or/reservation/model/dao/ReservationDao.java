@@ -27,4 +27,14 @@ public class ReservationDao {
 	public List<Reservation> allReser3() {
 		return session.selectList("reser.allReser3");
 	}
+
+	public String keyReser1() {
+		return session.selectOne("reser.key1");
+	}
+	public String keyReser2() {
+		return session.selectOne("reser.key2");
+	}
+	public String keyReser3() {
+		return session.selectOne("reser.key3");
+	}
 }

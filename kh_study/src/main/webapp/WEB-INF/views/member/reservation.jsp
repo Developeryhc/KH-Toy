@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,7 +39,7 @@
 					<div class="ReserList">
 						<c:forEach items="${list1 }" var="l" varStatus="i">
 							<div>${i.count }</div>
-							<div>${l.reserStudent }</div>
+							<div>${l.name }</div>
 							<div>${l.reserEnd }</div>
 							<div>
 								<input style="width: 50px;" type="button" onclick="cancle()" value="cancle" />
@@ -48,12 +49,12 @@
 				</div>
 				<div style="height: 20%">
 					<p class="reser_key">수령인</p>
-					<hr width="80%" style="margin: 0 auto;" />
-					서준식
+					<hr width="80%" style="margin: 0 auto;  margin-bottom: 10px" />
+					<%=request.getAttribute("key1") %>
 				</div>
 			</div>
 			<div class="list">
-				<div>A</div>
+				<div>B</div>
 				<div style="height: 70%">
 					<div class="ReserList">
 						<div style="width: 15%;">No.</div>
@@ -74,12 +75,12 @@
 				</div>
 				<div style="height: 20%">
 					<p class="reser_key">수령인</p>
-					<hr width="80%" style="margin: 0 auto;" />
-					서준식
+					<hr width="80%" style="margin: 0 auto; margin-bottom: 10px" />
+					<%=request.getAttribute("key2") %>
 				</div>
 			</div>
 			<div class="list">
-				<div>A</div>
+				<div>C</div>
 				<div style="height: 70%">
 					<div class="ReserList">
 						<div style="width: 15%;">No.</div>
@@ -100,8 +101,8 @@
 				</div>
 				<div style="height: 20%">
 					<p class="reser_key">수령인</p>
-					<hr width="80%" style="margin: 0 auto;" />
-					서준식
+					<hr width="80%" style="margin: 0 auto;  margin-bottom: 10px" />
+					<%=request.getAttribute("key3") %>
 				</div>
 			</div>
 
@@ -118,18 +119,24 @@
 				<div class="service_info">
 					<div class="info_ser" style="display: none;">
 						학생번호 <input type="text" name="reserStudent" class="service_name"
+						<%if(session.getAttribute("s") != null){ %>
 							value="<%=s.getStudentNo()%>" />
+							<%} %>
 					</div>
 
 					<div class="info_ser">
 						이름 <input type="text" class="service_name"
+						<%if(session.getAttribute("s") != null){ %>
 							value="<%=s.getStudentName()%>" />
+							<%} %>
 					</div>
 				</div>
 				<div class="service_info">
 					<div class="info_ser">
 						클래스 <input type="text" class="service_class"
+						<%if(session.getAttribute("s") != null){ %>
 							value="<%=s.getStudentClass()%>" />
+							<%} %>
 					</div>
 				</div>
 				<div class="service_info">
