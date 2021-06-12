@@ -50,9 +50,11 @@
   </div>
 
   <ul class="nav-links">
-    <li class="link">
-      <a href="/logout.do">Logout</a>
-    </li>
+  	<c:if test="${not empty sessionScope.s }">
+	    <li class="link">
+	      <a href="/logout.do" id="logoutLink">Logout</a>
+	    </li>
+    </c:if>
     <li class="link">
       <a href="/reservationFrm.do">Reservation</a>
       <ol>
