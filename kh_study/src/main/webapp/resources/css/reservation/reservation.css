@@ -15,7 +15,7 @@ a {
   text-decoration: none;
 }
 div {
-  border: 0px solid;
+  border: 0px solid black;
 }
 .pan {
   margin: 0 auto;
@@ -162,6 +162,7 @@ div {
 .list_pan {
   border: 0px solid black;
   width: 800px;
+  height : 512px;
   margin: 0 auto;
 }
 .Reservation {

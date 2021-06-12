@@ -37,4 +37,8 @@ public class ReservationDao {
 	public String keyReser3() {
 		return session.selectOne("reser.key3");
 	}
+
+	public int reserDelete(int studentNo) {
+		return session.update("reser.deleteReser",studentNo);
+	}
 }

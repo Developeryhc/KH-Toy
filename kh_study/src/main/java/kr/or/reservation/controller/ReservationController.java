@@ -3,6 +3,8 @@ package kr.or.reservation.controller;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,10 +43,9 @@ public class ReservationController {
 	@RequestMapping(value = "/insertReser.do")
 	public String insertReser(Reservation r,Model model){
 
+		//sysdate +" "+지정한 날짜
 		r.setReserStart(r.getReserDate()+" "+r.getReserStart());
 		r.setReserEnd(r.getReserDate()+" "+r.getReserEnd());
-
-		
 			
 		int result = service.insertReser(r);
 		if(result>0) {
@@ -60,4 +61,29 @@ public class ReservationController {
 		model.addAttribute("loc","/reservationFrm.do");
 		return "common/msg";
 	}
+	
+	@RequestMapping(value = "/reserDelete.do")
+	public String reserDelete(Model model,int studentNo) {
+		int result = service.reserDelete(studentNo);
+		if(result>0) {
+			model.addAttribute("msg","자습신청이 취소되었습니다.");
+		}else {
+			model.addAttribute("msg","자습신청이 취소 실패");
+		}
+		model.addAttribute("loc","/reservationFrm.do");
+		return "common/msg";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
