@@ -216,20 +216,26 @@ $(document).ready(function() {
       type : "post",
       data : {studentId : id},
       success : function(data){
+    	console.log(data);
         if(data == '1'){										//DB에서 조회되어 존재하는 아이디(중복된 ID)인 경우
           $('.regs').eq(0).css('color','red');
           $('.regs').eq(0).html('사용중인 ID 입니다.');
+          $('#signUpBtn').attr('disabled',true);
         }else{
           if(regId()){											//중복되지 않았지만 reg검사에서 true(!사용해 true됨)일 
 	      	  $('.regs').eq(0).css('color','red');          	
 	          $('.regs').eq(0).html('양식이 틀립니다.');
+	          $('#signUpBtn').attr('disabled',true);
           }else{
 	          $('.regs').eq(0).css('color','green');
 	          $('.regs').eq(0).html('사용 가능한 ID 입니다.');
+	          $($('#signId')).css('box-shadow','none');
+	          $('#signUpBtn').attr('disabled',false);
           }
           if($('#signId').val().length == 0){
           	$($('#signId')).css('box-shadow','none');    		//아무것도 입력되지 않았을 때
           	$('.regs').eq(0).html('');
+          	$('#signUpBtn').attr('disabled',true);
           }
         }
       }
@@ -249,6 +255,7 @@ $(document).ready(function() {
       alert('가입 양식을 지켜주세요');
       return;
     }
+    console.log(checkReg);
     //가입 정보 가져오기
     const id = $('#signId').val();
     const pw = $('#signPw').val();
@@ -475,6 +482,7 @@ function modifyPw(id,pw){
 function modalShow(num){
   //modal창
   const modal = document.getElementsByClassName('modal')[0];
+  modal.style.zIndex = '10000';
   if(num == 1){   // 매개변수가 modal-로그인일 때
     chkCookie();
     const modalBox = document.getElementsByClassName('modalBox-login')[0];

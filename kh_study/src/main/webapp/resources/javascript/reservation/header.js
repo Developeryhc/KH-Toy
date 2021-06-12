@@ -107,16 +107,122 @@
       
       
 //-----------------------사이드 메뉴 링크-----------------------------------------------
-
+		
+		function widthReset(){
+			if($(this).innerWidth() < 1260){
+				$('.adver').hide();
+				$('.widthBannerWrap').show();
+			}else{
+				$('.adver').show();
+				$('.widthBannerWrap').hide();
+			}
+		}
+		widthReset();
 		//lick > 사이드 메뉴의 li태그 아래의 a태그 href를 실행하느 함수
 		$('.link').click(function(){
-			location.href = "/logout.do";
-		});
-		$(window).resize(function(){
-			if($(this).innerWidth() < 1260){
-				$('.adver').css('right','-200px');
-			}else{
-				$('.adver').css('right',' 20px');
+			if($(this).children().attr('id') == 'logoutLink'){
+				location.href = "/logout.do";			
 			}
+		});
+		$('#closeAdBtnW').click(function(){
+			$('.adver').css('right','-200px');
+		});
+		$('#closeAdBtnH').click(function(){
+			$('.widthBannerWrap').hide();
+		});
+		var widthBannerPage = 0;
+		var heightBannerPage = 0;
+		
+		function bannerReset(){
+			for(var i=1;i<=$('.banners').length;i++){
+				$('.banners').eq(i).hide();
+				console.log(i);
+			}
+			for(var i=1;i<=$('.wBanners').length;i++){
+				$('.wBanners').eq(i).hide();
+				console.log(i);
+			}
+		}
+		bannerReset();
+		
+		function checkWidthBannerPage(page){
+				$('#nextBtnW').attr('disabled',false);
+				$('#prevBtnW').attr('disabled',false);			
+			if(page == 0){
+				$('#prevBtnW').attr('disabled',true);
+			}
+			if(page == 2){
+				$('#nextBtnW').attr('disabled',true);
+			}
+		}
+		checkWidthBannerPage(widthBannerPage);
+		
+		function checkHeightBannerPage(page){
+				$('#nextBtnH').attr('disabled',false);
+				$('#prevBtnH').attr('disabled',false);			
+			if(page == 0){
+				$('#prevBtnH').attr('disabled',true);
+			}
+			if(page == 1){
+				$('#nextBtnH').attr('disabled',true);
+			}
+		}
+		checkHeightBannerPage(heightBannerPage);
+		
+		$('#prevBtnW').click(function(event){
+			prevBtnW();
+		});
+		function prevBtnW(){
+			if(widthBannerPage == 1){
+				widthBannerPage--;
+				$('.banners').eq(0).show();
+				$('.banners').eq(1).hide();
+			}else if(widthBannerPage == 2){
+				widthBannerPage--;
+				$('.banners').eq(1).show();
+				$('.banners').eq(2).hide();				
+			}
+			checkWidthBannerPage(widthBannerPage);
+		}
+		
+		$('#nextBtnW').click(function(event){
+			nextBtnW();
+		});
+		function nextBtnW(){
+			if(widthBannerPage == 0){
+				widthBannerPage++;
+				$('.banners').eq(0).hide();
+				$('.banners').eq(1).show();
+			}else if(widthBannerPage == 1){
+				widthBannerPage++;
+				$('.banners').eq(1).hide();
+				$('.banners').eq(2).show();
+			}
+			checkWidthBannerPage(widthBannerPage);		
+		}
+		$('#prevBtnH').click(function(){
+			prevBtnH();
+		});
+		function prevBtnH(){
+			if(heightBannerPage == 1){
+				heightBannerPage--;
+				$('.wBanners').eq(1).hide();
+				$('.wBanners').eq(0).show();
+			}
+			checkHeightBannerPage(heightBannerPage);		
+		}
+		$('#nextBtnH').click(function(){
+			nextBtnH();
+		});
+		function nextBtnH(){
+			if(heightBannerPage == 0){
+				heightBannerPage++;
+				$('.wBanners').eq(0).hide();
+				$('.wBanners').eq(1).show();
+			}
+			checkHeightBannerPage(heightBannerPage);		
+		}
+		$(window).resize(function(){
+			widthReset();
 		});
     });

@@ -54,7 +54,7 @@
   padding: 10px 0;
 }
 .loginBox > form > input,
-button {
+.loginBox > form > button {
   display: block;
   width: 90%;
   height: 30px;

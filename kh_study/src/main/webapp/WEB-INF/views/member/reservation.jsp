@@ -1,29 +1,48 @@
 <%@page import="kr.or.student.model.vo.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- jquery -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <title>Document</title>
-</head>
+<!-- jquery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
 	var stu = ${sessionScope.s.studentNo};
 	console.log(stu);
 </script>
+</head>
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	<!-- <div class="content" style="width: 100%;margin: 0 auto">
+	<div class="content" style="width: 100%;margin: 0 auto">
 		<div class="adver">
-			<a href="#"><img src="/resources/image/advertisement/product1.jpg"></a>
-			
+			<!-- 수정 부분 -->
+			<div class="banner">
+				<a href="#" class="banners"><img src="/resources/image/advertisement/product1.jpg"></a>
+				<a href="#" class="banners"><img src="/resources/image/advertisement/foundaition.jpg"></a>
+				<a href="#" class="banners"><img src="/resources/image/advertisement/test1.png"></a>
+				<div class="bannerBtnsWrap">
+					<button class="bannerBtns" id="prevBtnW">&lt;</button>
+					<button class="bannerBtns" id="nextBtnW">&gt;</button>
+				</div>
+				<!-- <button class="bannerBtns" id="closeAdBtnW">X</button> -->
+			</div>
 		</div>
-	</div> -->
+	</div>
 	<!-- <div id="calendar"></div> -->
 	<div id="test" style="width: 800px;"></div>
+	<!-- 수정 부분 -->
+	<div class="widthBannerWrap">
+		<a href="#" class="wBanners"><img src="/resources/image/advertisement/widthBanner3.jpg"></a>
+		<a href="#" class="wBanners"><img src="/resources/image/advertisement/widthBanner2.jpg"></a>
+		<div class="bannerBtnsWrap">
+			<button class="bannerBtns" id="prevBtnH">&lt;</button>
+			<button class="bannerBtns" id="nextBtnH">&gt;</button>
+		</div>
+		<!-- <button class="bannerBtns" id="closeAdBtnH">X</button> -->
+	</div>
 	<div class="list_pan">
 		<div class="logo">Today</div>
 		<br>
@@ -194,7 +213,6 @@
 		</div>
 	</div>
 	<%}%>
-	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
@@ -222,7 +240,7 @@ console.log(stu);
 	          console.log(data.dateStr);
           }else{
         	  alert("로그인 후 이용이 가능합니다.");
-              location.href="/";
+              location.href = "/";
           }
         },
       });

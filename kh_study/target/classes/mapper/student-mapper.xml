@@ -10,7 +10,7 @@
 			student_pw as studentPw,
 			phone,
 			grade
-		from student where
+		from student where 
 		<choose>
 			<when test="studentId == null">	<!-- 아이디 찾기 -->
 				student_name=#{studentName} and phone=#{phone}
@@ -21,7 +21,7 @@
 			<when test="phone != null"> <!-- 비밀번호 찾기 -->
 				student_id=#{studentId} and phone=#{phone}
 			</when>
-			<when test="studentNo != null"> <!-- 마이페이지 -->
+			<when test="studentNo != 0"> <!-- 마이페이지 -->
 				student_no = #{studentNo}
 			</when>
 			<otherwise>	<!-- 아이디 중복 -->
