@@ -193,7 +193,8 @@
 			</form>
 		</div>
 	</div>
-	<%} %>
+	<%}%>
+	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
@@ -202,8 +203,31 @@ function cancle(No){
 	if(confirm("자습을 취소하시겠습니까?")){
 		location.href="/reserDelete.do?studentNo="+No;
 	}
-	
 }
+var stu = "<c:out value = '${sessionScope.s.studentNo}' />";
+console.log(stu);
+ document.addEventListener("DOMContentLoaded", function () {
+      var calendarEl = document.getElementById("test");
+
+      test = new FullCalendar.Calendar(calendarEl, {
+        plugins: ["interaction", "dayGrid"],
+        defaultDate: "2021-06-06",
+        editable: true,
+        eventLimit: true,
+        
+        dateClick: function (data) {
+          if(stu != ""){
+            $(".service").css("display", "block");
+	          $(".service_date").val(data.dateStr);
+	          console.log(data.dateStr);
+          }else{
+        	  alert("로그인 후 이용이 가능합니다.");
+              location.href="/";
+          }
+        },
+      });
+      test.render();
+    });
 </script>
 </html>
 
