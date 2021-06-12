@@ -26,11 +26,18 @@ public class ReservationController {
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
 		
+		String key1 = service.keyReser1();
+		String key2 = service.keyReser2();
+		String key3 = service.keyReser3();
+		model.addAttribute("key1",key1);
+		model.addAttribute("key2",key2);
+		model.addAttribute("key3",key3);
+		
 		return "member/reservation";
 	}
 	
 	@RequestMapping(value = "/insertReser.do")
-	public String insertReser(Reservation r,Model model) throws ParseException {
+	public String insertReser(Reservation r,Model model){
 
 		r.setReserStart(r.getReserDate()+" "+r.getReserStart());
 		r.setReserEnd(r.getReserDate()+" "+r.getReserEnd());

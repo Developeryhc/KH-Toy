@@ -9,12 +9,13 @@ public class Reservation {
 	private char reserKey;
 	private String reserStart;
 	private String reserEnd;
+	private String name;
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Reservation(int reserNo, int reserStudent, String reserDate, char reserKey, String reserStart,
-			String reserEnd) {
+			String reserEnd, String name) {
 		super();
 		this.reserNo = reserNo;
 		this.reserStudent = reserStudent;
@@ -22,6 +23,7 @@ public class Reservation {
 		this.reserKey = reserKey;
 		this.reserStart = reserStart;
 		this.reserEnd = reserEnd;
+		this.name = name;
 	}
 	public int getReserNo() {
 		return reserNo;
@@ -58,6 +60,12 @@ public class Reservation {
 	}
 	public void setReserEnd(String reserEnd) {
 		this.reserEnd = reserEnd;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
