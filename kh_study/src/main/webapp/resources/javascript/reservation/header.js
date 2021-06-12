@@ -1,26 +1,4 @@
-var stu = "<c:out value = '${sessionScope.s.studentNo}' />";
-console.log(stu);
- document.addEventListener("DOMContentLoaded", function () {
-      var calendarEl = document.getElementById("test");
 
-      test = new FullCalendar.Calendar(calendarEl, {
-        plugins: ["interaction", "dayGrid"],
-        defaultDate: "2021-06-06",
-        editable: true,
-        eventLimit: true,
-        //   dateClick: function () {
-        //     alert("제발");
-        //     },
-        dateClick: function (data) {
-
-	          $(".service").css("display", "block");
-	          $(".service_date").val(data.dateStr);
-	          console.log(data.dateStr);
-
-        },
-      });
-      test.render();
-    });
     
     $(function () {
     

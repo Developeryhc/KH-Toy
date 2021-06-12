@@ -31,4 +31,19 @@ public class ReservationService {
 		List list = dao.allReser3();
 		return (ArrayList<Reservation>)list;
 	}
+
+	public String keyReser1() {
+		return dao.keyReser1();
+	}
+	public String keyReser2() {
+		return dao.keyReser2();
+	}
+	public String keyReser3() {
+		return dao.keyReser3();
+	}
+
+	public int reserDelete(int studentNo) {
+		return dao.reserDelete(studentNo);
+	}
+
 }
