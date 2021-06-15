@@ -2,7 +2,7 @@
     
     $(function () {
     
-      console.clear();
+      
 
       const nav = document.querySelector("nav");
       const navLinksContainer = document.querySelector(".nav-links");

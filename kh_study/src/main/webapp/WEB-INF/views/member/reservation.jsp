@@ -6,16 +6,52 @@
 <html lang="ko">
 <head>
 <title>Document</title>
+<!-- 메인달력 -->
+<link href="/resources/css/reservation/packages/core/main.css" rel="stylesheet" />
+<link href="/resources/css/reservation/packages/daygrid/main.css" rel="stylesheet" />
+<script src="/resources/css/reservation/packages/core/main.js"></script>
+<script src="/resources/css/reservation/packages/interaction/main.js"></script>
+<script src="/resources/css/reservation/packages/daygrid/main.js"></script>
+
 <!-- jquery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
 	var stu = ${sessionScope.s.studentNo};
 	console.log(stu);
+	var test;
+	document.addEventListener("DOMContentLoaded", function () {
+		
+	  var calendarEl = document.getElementById("test");			
+	  test = new FullCalendar.Calendar(calendarEl, {
+	    plugins: ["interaction", "dayGrid"],
+	    defaultDate: "2021-06-06",
+	    editable: true,
+	    eventLimit: true,
+	    
+	    dateClick: function (data) {
+	      if(stu != ""){
+	        $(".service").css("display", "block");
+	       $(".service_date").val(data.dateStr);
+	       console.log(data.dateStr);
+	       
+	      }else{
+	    	  alert("로그인 후 이용이 가능합니다.");
+	          location.href = "/";
+	      }
+	    },
+	  });
+	  test.render();
+	});
+	$(function(){	
+		console.log(11111111111111);
+		test.addEvent({title:'test',color:'#ff0000',textColor:'#FFFFFF',start:'2021-06-15',end:'2016-06-21'});
+	});	
 </script>
 </head>
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	
 	<div class="content" style="width: 100%;margin: 0 auto">
 		<div class="adver">
 			<!-- 수정 부분 -->
@@ -215,38 +251,23 @@
 	<%}%>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	<script>
+		
+		function cancle(No){
+			if(confirm("자습을 취소하시겠습니까?")){
+				location.href="/reserDelete.do?studentNo="+No;
+			}
+		}
+		
+		var stu = "<c:out value = '${sessionScope.s.studentNo}' />";
+		console.log(stu);
+		
+		
+		</script>
 </body>
-<script>
-function cancle(No){
-	if(confirm("자습을 취소하시겠습니까?")){
-		location.href="/reserDelete.do?studentNo="+No;
-	}
-}
-var stu = "<c:out value = '${sessionScope.s.studentNo}' />";
-console.log(stu);
- document.addEventListener("DOMContentLoaded", function () {
-      var calendarEl = document.getElementById("test");
 
-      test = new FullCalendar.Calendar(calendarEl, {
-        plugins: ["interaction", "dayGrid"],
-        defaultDate: "2021-06-06",
-        editable: true,
-        eventLimit: true,
-        
-        dateClick: function (data) {
-          if(stu != ""){
-            $(".service").css("display", "block");
-	          $(".service_date").val(data.dateStr);
-	          console.log(data.dateStr);
-          }else{
-        	  alert("로그인 후 이용이 가능합니다.");
-              location.href = "/";
-          }
-        },
-      });
-      test.render();
-    });
-</script>
+
+
 </html>
 
 

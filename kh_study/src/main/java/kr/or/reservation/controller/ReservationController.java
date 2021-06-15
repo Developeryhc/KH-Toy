@@ -22,7 +22,7 @@ public class ReservationController {
 	private RecordService recService;
 	@RequestMapping(value="/reservationFrm.do")
 	public String reservationFrm(Model model) {
-		
+		System.out.println("asdf");
 		ArrayList<Reservation> list1 = service.allReser1();
 		ArrayList<Reservation> list2 = service.allReser2();
 		ArrayList<Reservation> list3 = service.allReser3();

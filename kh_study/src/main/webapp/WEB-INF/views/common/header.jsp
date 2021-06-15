@@ -18,12 +18,6 @@
 <link href="/resources/css/reservation/reservation.css" rel="stylesheet" type="text/css" />
 <script src="/resources/javascript/reservation/header.js" type="text/javascript"></script>
 
-<!-- 메인달력 -->
-<link href="/resources/css/reservation/packages/core/main.css" rel="stylesheet" />
-<link href="/resources/css/reservation/packages/daygrid/main.css" rel="stylesheet" />
-<script src="/resources/css/reservation/packages/core/main.js"></script>
-<script src="/resources/css/reservation/packages/interaction/main.js"></script>
-<script src="/resources/css/reservation/packages/daygrid/main.js"></script>
 
 
 <!-- 미니달력 -->

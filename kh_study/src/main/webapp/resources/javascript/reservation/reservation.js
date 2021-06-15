@@ -1,6 +1,7 @@
-
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+/*
+$(function(){
+	document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('test');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       headerToolbar: {
@@ -78,3 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     calendar.render();
   });
+  console.log(1);
+  calendar.addEvent({title:'test',color:'#ff0000',textColor:'#FFFFFF',start:'2021-06-15',end:'2016-06-21'});
+  console.log(2);
+});
+
+*/
