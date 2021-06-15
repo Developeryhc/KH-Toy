@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // 지워야할 부분은 삭제 필요 ( 우선 예시로 남겨둠 )
         {
           title: 'Business Lunch',
-          start: '2020-09-03T13:00:00',
+          start: '2021-06-15T13:00:00',
           constraint: 'businessHours'
         },
         {
