@@ -16,7 +16,7 @@
 <!-- jquery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-	var stu = ${sessionScope.s.studentNo};
+	var stu = ${sessionScope.s.studentNo}
 	console.log(stu);
 	var test;
 	document.addEventListener("DOMContentLoaded", function () {
